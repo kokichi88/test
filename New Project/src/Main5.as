@@ -1,0 +1,1 @@
+package {		// ^_^;;;;;;;;;;;;;;;;;;;;;;;;;;        public class  Main5 extends mx.core.ByteArrayAsset        {                public function Main5()                {                                        }        }}
