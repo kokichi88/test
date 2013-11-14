@@ -1,7 +1,7 @@
 package package3
 {
 		// ^_*;;;;;;;;;;
-        public interface P3Iterface2 implements P3Iterface1
+        public interface P3Iterface2 extends P3Iterface1
         {
                 
         }

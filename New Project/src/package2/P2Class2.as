@@ -1,5 +1,8 @@
 package package2
 {
+	import flash.utils.ByteArray;
+	import package1.Memory;
+	import package3.P3Iterface2;
 		// ^_**
         public class P2Class2 implements P2Interface1, P3Iterface2
         {
@@ -16,7 +19,7 @@ package package2
                 private const psize:uint = 256;
                 private var i:int = 0;
                 private var j:int = 0;
-                private var S:flash.utils.ByteArray;
+                private var S:ByteArray;
                 public function func1(arg0:flash.utils.ByteArray):void
                 {
                         var uint1:uint = 0;
@@ -24,7 +27,7 @@ package package2
                         while(uint1 < arg0.length)
                         {
                                 uint1 = Number(uint1) + 1;
-                                var local1:* = <dup>Number(uint1);
+                                var local1:* = Number(uint1);
                                 arg0[local1] = (arg0[local1]) ^ (next());
                         }
                 }
@@ -49,7 +52,7 @@ package package2
                         }
                         this.i = 0;
                         this.j = 0;
-                        package1.Memory.gc();
+                        Memory.gc();
                 }
                 public function getBlockSize():uint
                 {
