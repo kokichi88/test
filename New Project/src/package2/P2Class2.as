@@ -17,7 +17,7 @@ package package2
                 private var i:int = 0;
                 private var j:int = 0;
                 private var S:flash.utils.ByteArray;
-                public function ;;^^;;;(arg0:flash.utils.ByteArray):void
+                public function func1(arg0:flash.utils.ByteArray):void
                 {
                         var uint1:uint = 0;
                         uint1 = 0;
@@ -28,9 +28,9 @@ package package2
                                 arg0[local1] = (arg0[local1]) ^ (next());
                         }
                 }
-                public function ;^^;;;;(arg0:flash.utils.ByteArray):void
+                public function func2(arg0:flash.utils.ByteArray):void
                 {
-                        ;;^^;;;(arg0);
+                        func1(arg0);
                 }
                 public function dispose():void
                 {
