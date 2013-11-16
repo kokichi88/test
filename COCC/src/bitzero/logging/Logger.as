@@ -6,7 +6,7 @@
     {
         private var _loggingLevel:int;
         private var _enableConsoleTrace:Boolean = true;
-        private var _enableEventDispatching:Boolean = false;
+        private var _enableEventDispatching:Boolean = true;
         private static var _locked:Boolean = true;
         private static var _instance:Logger;
 

@@ -34,7 +34,7 @@
 
         private function onConnection(event:BZEvent) : void
         {
-            this.logger.info("Connected to server", event.params["success"]);
+            trace("Connected to server", event.params["success"]);
             if (BZConnector.getInstance().bzClient.isConnected)
             {
                 this.callAfterConnect();
@@ -44,25 +44,25 @@
 
         private function onConnectionLost(event:BZEvent) : void
         {
-            this.logger.info("Disconnected to server. Reason:", event.params["reason"]);
+            trace("Disconnected to server. Reason:", event.params["reason"]);
             return;
         }// end function
 
         private function connectionRetry(event:BZEvent) : void
         {
-            this.logger.info("Connection Retry", event.params);
+            trace("Connection Retry", event.params);
             return;
         }// end function
 
         private function connectionResume(event:BZEvent) : void
         {
-            this.logger.info("Restore connection");
+            trace("Restore connection");
             return;
         }// end function
 
         private function onPingPong(event:BZEvent) : void
         {
-            this.logger.info("on Ping Pong ");
+            trace("on Ping Pong ");
             return;
         }// end function
 

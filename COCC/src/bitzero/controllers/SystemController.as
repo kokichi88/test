@@ -39,10 +39,10 @@
 
         override public function handleMessage(param1:IMessage) : void
         {
-            if (this.bz.debug)
-            {
-                log.info(this.getEvtName(param1.id), param1);
-            }
+            //if (this.bz.debug)
+            //{
+                trace(this.getEvtName(param1.id), param1);
+            //}
             var _loc_2:* = this.requestHandlers[param1.id];
             if (_loc_2 == null)
             {

@@ -36,17 +36,18 @@
         private function init(event:Event = null) : void
         {
             removeEventListener(Event.ADDED_TO_STAGE, this.init);
-            if ("configUrl" in stage.loaderInfo.parameters)
+			var config:Object = ConfigHijack.makeConfig();
+            if ("configUrl" in config)
             {
-                Config.staticURL = stage.loaderInfo.parameters["configUrl"];
-                Config.server_ip = stage.loaderInfo.parameters["socketIp"];
-                Config.server_port = stage.loaderInfo.parameters["socketPort"];
-                Config.uId = stage.loaderInfo.parameters["userId"];
-                Config.signed_request = stage.loaderInfo.parameters["signed_request"];
-                Config.authorizationCode = stage.loaderInfo.parameters["code"];
-                Config.gameVersion = stage.loaderInfo.parameters["gameVersion"];
-                Config.configVersion = stage.loaderInfo.parameters["configVersion"];
-                Config.hasFeed = stage.loaderInfo.parameters["isFeed"];
+                Config.staticURL = config["configUrl"];
+                Config.server_ip = config["socketIp"];
+                Config.server_port = config["socketPort"];
+                Config.uId = config["userId"];
+                Config.signed_request = config["signed_request"];
+                Config.authorizationCode = config["code"];
+                Config.gameVersion = config["gameVersion"];
+                Config.configVersion = config["configVersion"];
+                Config.hasFeed = config["isFeed"];
             }
             GlobalVar.SCREEN_WIDTH = stage.stageWidth;
             GlobalVar.SCREEN_HEIGHT = stage.stageHeight;
