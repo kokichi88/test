@@ -213,9 +213,8 @@
             {
                 return;
             }
-            var _loc_2:String = this;
-            var _loc_3:* = this.curLoop + 1;
-            _loc_2.curLoop = _loc_3;
+            
+            this.curLoop++;
             if (this.curLoop >= this.dropLoop)
             {
             }

@@ -39,6 +39,9 @@
     </source-path>
     <library-path append="true">
       <path-element>D:\Projects\github\test\COCC\lib\greensock.swc</path-element>
+      <path-element>D:\Projects\github\test\COCC\lib\bulkLoader.swc</path-element>
+      <path-element>D:\Projects\github\test\COCC\lib\as3commons-reflect-1.6.2.swc</path-element>
+      <path-element>D:\Projects\github\test\COCC\lib\AsWing.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>

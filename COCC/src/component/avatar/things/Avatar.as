@@ -150,9 +150,8 @@
             {
                 if (this.bodyBitmap.setting.reachEnding)
                 {
-                    var _loc_1:String = this;
-                    var _loc_2:* = this.duration - 1;
-                    _loc_1.duration = _loc_2;
+                  
+                    this.duration--;
                     if (this.duration == 0)
                     {
                         switch(this.typeAction)

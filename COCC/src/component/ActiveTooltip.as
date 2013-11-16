@@ -260,9 +260,7 @@
             {
                 if (this.CountDownShow > 0)
                 {
-                    var _loc_1:String = this;
-                    var _loc_2:* = this.CountDownShow - 1;
-                    _loc_1.CountDownShow = _loc_2;
+                    this.CountDownShow--;
                     if (this.CountDownShow <= 0)
                     {
                         this.txt.visible = true;
@@ -280,10 +278,8 @@
                     }
                 }
                 if (this.CountDownHide > 0)
-                {
-                    var _loc_1:String = this;
-                    var _loc_2:* = this.CountDownHide - 1;
-                    _loc_1.CountDownHide = _loc_2;
+                {                   
+                    this.CountDownHide--;
                     if (this.CountDownHide <= 0)
                     {
                         this.clearTooltip();

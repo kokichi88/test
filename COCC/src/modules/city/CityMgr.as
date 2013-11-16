@@ -611,9 +611,7 @@
             }
             if (GlobalVar.state == GlobalVar.STATE_SINGLE_MAP)
             {
-                var _loc_3:String = this;
-                var _loc_4:* = this.lastACKLoop + 1;
-                _loc_3.lastACKLoop = _loc_4;
+                this.lastACKLoop++;
                 if (this.lastACKLoop == COUNT_LAST_ACK_LOOP)
                 {
                     this.sendDisconect();
@@ -631,13 +629,9 @@
             }
             else
             {
-                var _loc_3:String = this;
-                var _loc_4:* = this.countDownCreateFarmer - 1;
-                _loc_3.countDownCreateFarmer = _loc_4;
+                this.countDownCreateFarmer--;
             }
-            var _loc_3:String = this;
-            var _loc_4:* = this.countDownGetCurTime - 1;
-            _loc_3.countDownGetCurTime = _loc_4;
+            this.countDownGetCurTime--;
             if (this.countDownGetCurTime < 0)
             {
                 this.sendGetCurTime();
@@ -661,9 +655,7 @@
             }
             var _loc_2:* = new Farmer();
             _loc_2.setInfo(this.farmerId);
-            var _loc_3:String = this;
-            var _loc_4:* = this.farmerId + 1;
-            _loc_3.farmerId = _loc_4;
+            this.farmerId++;
             this.farmerList.push(_loc_2);
             if (param1 == 1)
             {
@@ -680,9 +672,7 @@
             }
             var _loc_2:* = new AngryBird();
             _loc_2.setInfo(this.birdId);
-            var _loc_3:String = this;
-            var _loc_4:* = this.birdId + 1;
-            _loc_3.birdId = _loc_4;
+            this.birdId++;
             this.birdList.push(_loc_2);
             return;
         }// end function

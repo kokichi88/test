@@ -51,6 +51,9 @@
   <!-- SWC Libraries -->
   <libraryPaths>
     <element path="lib\greensock.swc" />
+    <element path="lib\bulkLoader.swc" />
+    <element path="lib\as3commons-reflect-1.6.2.swc" />
+    <element path="lib\AsWing.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

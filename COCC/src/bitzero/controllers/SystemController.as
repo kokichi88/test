@@ -50,8 +50,7 @@
             }
             else
             {
-                var _loc_3:String = this;
-                _loc_3.this[_loc_2](param1);
+               this[_loc_2](param1);
             }
             return;
         }// end function

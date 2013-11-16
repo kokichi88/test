@@ -6,6 +6,7 @@
     import flash.events.*;
     import flash.text.*;
     import gameData.*;
+	import modules.battle.data.Troop;
     import modules.city.*;
     import resMgr.*;
 

@@ -124,7 +124,7 @@
 
         private static function transform(param1:Function, param2:int, param3:int, param4:int, param5:int, param6:int, param7:int, param8:int) : int
         {
-            var _loc_9:* = param2 + int(MD5.param1(param3, param4, param5)) + param6 + param8;
+            var _loc_9:* = param2 + int(param1(param3, param4, param5)) + param6 + param8;
             return IntUtil.rol(_loc_9, param7) + param3;
         }// end function
 

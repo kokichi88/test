@@ -158,9 +158,7 @@
                 CityMgr.getInstance().removeCityTroop(this.troopIndex);
                 return;
             }
-            var _loc_1:String = this;
-            var _loc_2:* = this.countIdle - 1;
-            _loc_1.countIdle = _loc_2;
+            this.countIdle--;
             if (this.countIdle <= 0)
             {
                 this.countIdle = COUNT_DOWN_IDLE;

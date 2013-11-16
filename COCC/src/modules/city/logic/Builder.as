@@ -199,9 +199,7 @@
             {
                 return;
             }
-            var _loc_2:String = this;
-            var _loc_3:* = this.countIdle - 1;
-            _loc_2.countIdle = _loc_3;
+            this.countIdle--;
             if (this.returnHome)
             {
                 CityMgr.getInstance().removeBuilder(this.builderHurtIndex);

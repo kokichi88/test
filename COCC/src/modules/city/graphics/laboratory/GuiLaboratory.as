@@ -94,7 +94,7 @@
                 
                 _loc_2 = new GuiLaboratotyItem();
                 _loc_3 = startX + (_loc_2.widthBg + padingX) * (_loc_1 % 5);
-                _loc_4 = startY + (_loc_2.heightBg + padingY) * this.int(_loc_1 / 5);
+                _loc_4 = startY + (_loc_2.heightBg + padingY) * int(_loc_1 / 5);
                 _loc_2.setPos(_loc_3, _loc_4);
                 _loc_2.disableItem();
                 addGui(_loc_2);

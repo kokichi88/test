@@ -3,7 +3,7 @@
     import __AS3__.vec.*;
     import flash.display.*;
     import flash.geom.*;
-    import flash.ui.*;
+	import flash.ui.Mouse;
     import gameData.*;
     import map.*;
     import map.logic.*;

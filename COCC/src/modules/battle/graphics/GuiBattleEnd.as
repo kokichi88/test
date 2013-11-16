@@ -135,9 +135,8 @@
             this.numStar = Math.min(this.numStar, 3);
             if (this.numStar > 0)
             {
-                var _loc_2:String = this;
-                var _loc_3:* = this.numStar - 1;
-                _loc_2.numStar = _loc_3;
+              
+                this.numStar--;
                 if (this.indexStar > 3)
                 {
                     return;
@@ -149,18 +148,15 @@
                 _loc_1.y = this["imageStar" + this.indexStar].y + this["imageStar" + this.indexStar].height / 2;
                 img.addChild(_loc_1);
                 EffectDraw.effShowHideAlpha(_loc_1, 1, 0, 1, this.onEndEffectGainStar, [_loc_1], 0);
-                var _loc_2:String = this;
-                var _loc_3:* = this.indexStar + 1;
-                _loc_2.indexStar = _loc_3;
+               
+                this.indexStar++;
             }
             return;
         }// end function
 
         private function onEnterFrame(event:Event) : void
-        {
-            var _loc_3:String = this;
-            var _loc_4:* = this.countDownFrame + 1;
-            _loc_3.countDownFrame = _loc_4;
+        {            
+            this.countDownFrame++;
             if (this.countDownFrame < COUNT_FRAME)
             {
                 return;

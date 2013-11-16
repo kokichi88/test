@@ -4,6 +4,7 @@
     import component.*;
     import flash.display.*;
     import flash.geom.*;
+	import modules.replay.data.LogBattleData;
     import resMgr.*;
 
     public class GuiLogDefences extends BaseGui

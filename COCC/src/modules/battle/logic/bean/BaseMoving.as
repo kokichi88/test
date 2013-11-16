@@ -40,10 +40,8 @@
             if (this.curLoopRun < this.numLoopRun)
             {
                 this.x = this.x + this.dxChange;
-                this.y = this.y + this.dyChange;
-                var _loc_1:String = this;
-                var _loc_2:* = this.curLoopRun + 1;
-                _loc_1.curLoopRun = _loc_2;
+                this.y = this.y + this.dyChange;              
+                this.curLoopRun++;
             }
             else if (this.path && this.path.length > 0)
             {

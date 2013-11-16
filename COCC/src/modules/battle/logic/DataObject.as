@@ -139,9 +139,8 @@
             {
                 return;
             }
-            var _loc_1:String = this;
-            var _loc_2:* = this.numLoopProgres - 1;
-            _loc_1.numLoopProgres = _loc_2;
+            
+            this.numLoopProgres--;
             if (this.numLoopProgres < 0)
             {
                 if (this.progressHp)

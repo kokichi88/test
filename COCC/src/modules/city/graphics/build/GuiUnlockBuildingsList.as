@@ -63,7 +63,7 @@
             for (_loc_4 in _loc_2)
             {
                 
-                if (_loc_16[_loc_15] == _loc_4.toUpperCase())
+                if (_loc_4.toUpperCase())
                 {
                     _loc_12 = _loc_2[_loc_4];
                     _loc_13 = _loc_3[_loc_4];

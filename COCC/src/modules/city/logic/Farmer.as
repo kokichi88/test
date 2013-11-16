@@ -190,9 +190,7 @@
             }
             else
             {
-                var _loc_5:String = this;
-                var _loc_6:* = this.numHouse + 1;
-                _loc_5.numHouse = _loc_6;
+                this.numHouse++;
                 if (this.numHouse >= COUNT_HOUSE)
                 {
                     return this.getTowHall();
@@ -380,9 +378,7 @@
             }
             if (this.curWall)
             {
-                var _loc_11:String = this;
-                var _loc_12:* = this.countWallHide - 1;
-                _loc_11.countWallHide = _loc_12;
+                this.countWallHide--;
                 if (this.countWallHide <= 0)
                 {
                     this.curWall.onCompleteTween();
@@ -413,9 +409,7 @@
             {
                 return;
             }
-            var _loc_11:String = this;
-            var _loc_12:* = this.countIdle - 1;
-            _loc_11.countIdle = _loc_12;
+            this.countIdle--;
             if (this.countIdle <= 0)
             {
                 if (this.numHouse >= COUNT_HOUSE)

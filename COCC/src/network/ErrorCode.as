@@ -44,17 +44,17 @@
 
         public static function getReason(param1:int) : String
         {
-            var _loc_3:XML = null;
-            var _loc_2:* = describeType().descendants("constant");
-            for each (_loc_3 in _loc_2)
-            {
-                
-                if ([_loc_3.@name] == param1)
-                {
-                    return _loc_3.@name;
-                }
-            }
-            return null;
+            //var _loc_3:XML = null;
+            //var _loc_2:* = describeType().descendants("constant");
+            //for each (_loc_3 in _loc_2)
+            //{
+                //
+                //if ([_loc_3.@name] == param1)
+                //{
+                    //return _loc_3.@name;
+                //}
+            //}
+            return param1.toString();
         }// end function
 
     }

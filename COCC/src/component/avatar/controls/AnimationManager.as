@@ -438,6 +438,7 @@
 
     }
 }
+import flash.display.Loader;
 
 class FrameLoader extends Loader
 {

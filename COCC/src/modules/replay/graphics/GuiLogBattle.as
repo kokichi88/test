@@ -4,6 +4,7 @@
     import component.*;
     import flash.display.*;
     import flash.events.*;
+	import modules.replay.data.LogBattleData;
     import resMgr.*;
 
     public class GuiLogBattle extends BaseGui

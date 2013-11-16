@@ -6,6 +6,7 @@
     import flash.events.*;
     import flash.text.*;
     import gameData.*;
+	import gameData.clan.ClanInfo;
     import modules.city.*;
     import modules.city.graphics.clan.symbol.*;
     import resMgr.*;

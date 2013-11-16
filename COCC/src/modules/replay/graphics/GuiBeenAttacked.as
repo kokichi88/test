@@ -4,6 +4,7 @@
     import component.*;
     import flash.events.*;
     import flash.text.*;
+	import modules.replay.data.LogBattleData;
     import resMgr.*;
     import utility.*;
 

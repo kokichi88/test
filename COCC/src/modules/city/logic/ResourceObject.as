@@ -143,9 +143,7 @@
             {
                 if (this.numLoop > 0)
                 {
-                    var _loc_6:String = this;
-                    var _loc_7:* = this.numLoop + 1;
-                    _loc_6.numLoop = _loc_7;
+                    this.numLoop++;
                     if (this.numLoop == NUM_LOOP_DELAY)
                     {
                         this.numLoop = 0;

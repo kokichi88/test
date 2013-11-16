@@ -8,6 +8,7 @@
     import modules.city.*;
     import modules.city.graphics.build.*;
     import modules.city.graphics.shop.*;
+	import modules.city.logic.BarrackObject;
     import resMgr.*;
     import utility.*;
 

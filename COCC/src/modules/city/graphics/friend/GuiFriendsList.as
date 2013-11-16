@@ -4,6 +4,7 @@
     import component.*;
     import flash.display.*;
     import flash.events.*;
+	import gameData.FriendInfo;
     import modules.city.*;
     import resMgr.*;
 

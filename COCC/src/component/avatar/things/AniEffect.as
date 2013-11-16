@@ -60,9 +60,7 @@
 
         private function checkLoaded() : void
         {
-            var _loc_1:String = this;
-            var _loc_2:* = this.checkCount + 1;
-            _loc_1.checkCount = _loc_2;
+            this.checkCount++;
             if (this.animation.data.ready)
             {
                 this.play(null, this.lastPoint);

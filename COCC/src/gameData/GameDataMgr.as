@@ -1320,7 +1320,7 @@
                     }
                     _loc_3++;
                 }
-                _loc_8 = this.int(_loc_5 / _loc_7);
+                _loc_8 = int(_loc_5 / _loc_7);
                 if (_loc_7 == 0 || _loc_8 == 0)
                 {
                     break;

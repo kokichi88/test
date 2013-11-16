@@ -1,21 +1,21 @@
 ﻿package modules.city.graphics.chat
 {
-    import __AS3__.vec.*;
-    import component.*;
-    import flash.display.*;
-    import flash.events.*;
-    import flash.geom.*;
-    import flash.text.*;
-    import flash.ui.*;
-    import gameData.*;
-    import gameData.clan.*;
-    import gameData.donation.*;
-    import modules.battle.data.*;
-    import modules.city.*;
-    import mx.utils.*;
-    import network.receive.*;
-    import resMgr.*;
-    import utility.*;
+	import __AS3__.vec.*;
+	import component.*;
+	import flash.display.*;
+	import flash.events.*;
+	import flash.geom.*;
+	import flash.text.*;
+	import flash.ui.Keyboard;
+	import gameData.*;
+	import gameData.clan.*;
+	import gameData.donation.*;
+	import modules.battle.data.*;
+	import modules.city.*;
+	import mx.utils.*;
+	import network.receive.*;
+	import resMgr.*;
+	import utility.*;
 
     public class GuiContentChat extends BaseGui
     {

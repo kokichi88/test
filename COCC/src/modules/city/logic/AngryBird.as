@@ -161,10 +161,8 @@
                 CityMgr.getInstance().removeAngryBird(this.birdId);
             }
             if (this.avatar && this.avatar.anSetting.currAction == AnConst.STAND)
-            {
-                var _loc_1:String = this;
-                var _loc_2:* = this.countDownFrame - 1;
-                _loc_1.countDownFrame = _loc_2;
+            {              
+                this.countDownFrame--;
             }
             if (this.avatar && this.countDownFrame <= 0)
             {

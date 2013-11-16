@@ -188,9 +188,8 @@
             this.showFinishedMessage(param1);
             if (this.status == UPGRADING)
             {
-                var _loc_2:String = this;
-                var _loc_3:* = this.level + 1;
-                _loc_2.level = _loc_3;
+                
+                this.level++;
                 this.loadConfigData();
                 this.status = PRODUCING;
                 this.upgradeAvatar();

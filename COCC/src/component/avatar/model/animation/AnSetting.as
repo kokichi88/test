@@ -76,9 +76,7 @@
                 return;
             }
             this.reachEnding = false;
-            var _loc_4:String = this;
-            var _loc_5:* = this.curFrameDelay + 1;
-            _loc_4.curFrameDelay = _loc_5;
+            this.curFrameDelay++;
             var _loc_3:* = Math.ceil(_loc_2.speed / this.speedRatio);
             if (this._currAction == AnConst.RUN)
             {
@@ -100,23 +98,17 @@
             {
             }
             this.curFrameDelay = 0;
-            var _loc_4:String = this;
-            var _loc_5:* = this.currFrame + 1;
-            _loc_4.currFrame = _loc_5;
+            this.currFrame++;
             if (this.currFrame > (_loc_2.frameCount - 1) || this.currFrame == (this.abortFrame + 1))
             {
-                this.currFrame = 0;
-                var _loc_4:String = this;
-                var _loc_5:* = this.repeatedCount + 1;
-                _loc_4.repeatedCount = _loc_5;
+                this.currFrame = 0;              
+                this.repeatedCount++;
                 this.abortFrame = -1;
                 this.reachEnding = true;
                 if (_loc_2.swing)
                 {
-                    this.reversed = !this.reversed;
-                    var _loc_4:String = this;
-                    var _loc_5:* = this.currFrame + 1;
-                    _loc_4.currFrame = _loc_5;
+                    this.reversed = !this.reversed;                   
+                    this.currFrame++;
                 }
             }
             else

@@ -330,9 +330,7 @@
             {
                 return;
             }
-            var _loc_1:String = this;
-            var _loc_2:* = this.countView + 1;
-            _loc_1.countView = _loc_2;
+            this.countView++;
             if (this.countView >= COUNT_DOWN_VIEW)
             {
                 this.hideViewRange();

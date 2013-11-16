@@ -59,9 +59,7 @@
         private function onMove() : void
         {
             this.y = this.initY + Back.easeOut(this.time, 0, this.total, this.maxTime, 3);
-            var _loc_1:String = this;
-            var _loc_2:* = this.time + 1;
-            _loc_1.time = _loc_2;
+            this.time++;
             if (this.time > this.maxTime)
             {
                 if (parent)
@@ -231,7 +229,7 @@
             }
             else
             {
-                new AttUpdateEffect.play(param1, param2, param3, param4, param5);
+                (new AttUpdateEffect()).play(param1, param2, param3, param4, param5);
             }
             return;
         }// end function
@@ -244,7 +242,7 @@
             }
             else
             {
-                new AttUpdateEffect.play2(param1, param2, param3, param4, param5);
+                (new AttUpdateEffect()).play2(param1, param2, param3, param4, param5);
             }
             return;
         }// end function

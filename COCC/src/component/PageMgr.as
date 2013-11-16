@@ -55,13 +55,13 @@
                 case VERTICAL:
                 {
                     this.hD = this.hD + param4;
-                    this.totalPage = this.hD % this.hR == 0 ? (this.hD / this.hR) : ((this.int(this.hD / this.hR) + 1));
+                    this.totalPage = this.hD % this.hR == 0 ? (this.hD / this.hR) : ((int(this.hD / this.hR) + 1));
                     break;
                 }
                 case HOZIRONTOL:
                 {
                     this.wD = this.wD + param4;
-                    this.totalPage = this.wD % this.wR == 0 ? (this.wD / this.wR) : ((this.int(this.wD / this.wR) + 1));
+                    this.totalPage = this.wD % this.wR == 0 ? (this.wD / this.wR) : ((int(this.wD / this.wR) + 1));
                     break;
                 }
                 default:

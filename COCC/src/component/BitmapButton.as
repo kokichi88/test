@@ -587,9 +587,7 @@
 
         private function onBlink(event:Event) : void
         {
-            var _loc_2:String = this;
-            var _loc_3:* = this.count + 1;
-            _loc_2.count = _loc_3;
+            this.count++;
             if (this.count > 30)
             {
                 this.img.filters = [blinkFilter];

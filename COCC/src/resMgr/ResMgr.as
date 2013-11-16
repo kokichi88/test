@@ -3,6 +3,7 @@
     import __AS3__.vec.*;
     import flash.display.*;
     import flash.events.*;
+	import flash.geom.Rectangle;
     import flash.net.*;
     import flash.system.*;
     import utility.*;

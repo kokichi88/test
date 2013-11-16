@@ -1085,8 +1085,8 @@
             var _loc_5:* = param2.length - 1;
             if (param1 > param2[_loc_5])
             {
-                _loc_9 = Utility.int(param1 / param2[_loc_5]);
-                _loc_10 = Utility.int(param1 % param2[_loc_5]);
+                _loc_9 = int(param1 / param2[_loc_5]);
+                _loc_10 = int(param1 % param2[_loc_5]);
                 return _loc_9 * calculateExchangeCost(param2[_loc_5], param2, param3) + calculateExchangeCost(_loc_10, param2, param3);
             }
             var _loc_6:int = 0;

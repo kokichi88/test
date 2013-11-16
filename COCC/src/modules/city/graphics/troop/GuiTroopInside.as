@@ -4,6 +4,7 @@
     import component.*;
     import flash.display.*;
     import flash.events.*;
+	import modules.battle.data.Troop;
     import resMgr.*;
 
     public class GuiTroopInside extends BaseGui

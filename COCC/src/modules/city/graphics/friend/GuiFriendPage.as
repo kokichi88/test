@@ -5,6 +5,7 @@
     import flash.display.*;
     import flash.events.*;
     import flash.geom.*;
+	import gameData.FriendInfo;
     import resMgr.*;
 
     public class GuiFriendPage extends BaseGui

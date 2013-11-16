@@ -158,7 +158,7 @@
 
         public function addCustomController(param1:int, param2:Class) : void
         {
-            var _loc_3:* = this.param2(this);
+            var _loc_3:* = new param2()
             this.addController(param1, _loc_3);
             return;
         }// end function
@@ -288,10 +288,8 @@
                 return;
             }
             this.connect(this._lastIpAddress, this._lastTcpPort);
-            dispatchEvent(new EngineEvent(EngineEvent.RECONNECTION_TRY, this._reconnectionTry));
-            var _loc_1:String = this;
-            var _loc_2:* = this._reconnectionTry - 1;
-            _loc_1._reconnectionTry = _loc_2;
+            dispatchEvent(new EngineEvent(EngineEvent.RECONNECTION_TRY, this._reconnectionTry));          
+            this._reconnectionTry--;
             this._log.info("Reconnect : ", this._reconnectionTry);
             return;
         }// end function

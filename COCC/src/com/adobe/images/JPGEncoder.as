@@ -218,10 +218,8 @@
                 {
                     this.bytenew = this.bytenew | uint(1 << this.bytepos);
                 }
-                _loc_3 = _loc_3 - 1;
-                var _loc_4:String = this;
-                var _loc_5:* = this.bytepos - 1;
-                _loc_4.bytepos = _loc_5;
+                _loc_3 = _loc_3 - 1;              
+                this.bytepos--;
                 if (this.bytepos < 0)
                 {
                     if (this.bytenew == 255)

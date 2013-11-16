@@ -369,9 +369,7 @@
             {
                 return;
             }
-            var _loc_1:String = this;
-            var _loc_2:* = this.numShow + 1;
-            _loc_1.numShow = _loc_2;
+            this.numShow++;
             this.showDeployTroopPosition(this.startPos.x + 100 + this.arrow.width / 2, this.startPos.y + 100 + this.arrow.height);
             return;
         }// end function
@@ -519,9 +517,7 @@
                     }
                     else
                     {
-                        var _loc_23:String = this;
-                        var _loc_24:* = this.curStep + 1;
-                        _loc_23.curStep = _loc_24;
+                        this.curStep++;
                         this.finishStep();
                         this.run();
                     }
@@ -535,9 +531,7 @@
                     }
                     else
                     {
-                        var _loc_23:String = this;
-                        var _loc_24:* = this.curStep + 1;
-                        _loc_23.curStep = _loc_24;
+                        this.curStep++;
                         this.finishStep();
                         this.run();
                     }
@@ -551,9 +545,7 @@
                     }
                     else
                     {
-                        var _loc_23:String = this;
-                        var _loc_24:* = this.curStep + 1;
-                        _loc_23.curStep = _loc_24;
+                        this.curStep++;
                         this.finishStep();
                         this.run();
                     }
@@ -567,9 +559,7 @@
                     }
                     else
                     {
-                        var _loc_23:String = this;
-                        var _loc_24:* = this.curStep + 1;
-                        _loc_23.curStep = _loc_24;
+                       this.curStep++;
                         this.finishStep();
                         this.run();
                     }
@@ -583,9 +573,7 @@
                     }
                     else
                     {
-                        var _loc_23:String = this;
-                        var _loc_24:* = this.curStep + 1;
-                        _loc_23.curStep = _loc_24;
+                       this.curStep++;
                         this.finishStep();
                         this.run();
                     }
@@ -600,9 +588,7 @@
                     }
                     else
                     {
-                        var _loc_23:String = this;
-                        var _loc_24:* = this.curStep + 1;
-                        _loc_23.curStep = _loc_24;
+                       this.curStep++;
                         this.finishStep();
                         this.run();
                     }
@@ -619,9 +605,7 @@
                     }
                     else
                     {
-                        var _loc_23:String = this;
-                        var _loc_24:* = this.curStep + 1;
-                        _loc_23.curStep = _loc_24;
+                        this.curStep++;
                         this.finishStep();
                         this.run();
                     }
@@ -638,9 +622,7 @@
                     }
                     else
                     {
-                        var _loc_23:String = this;
-                        var _loc_24:* = this.curStep + 1;
-                        _loc_23.curStep = _loc_24;
+                       this.curStep++;
                         this.finishStep();
                         this.run();
                     }
@@ -657,9 +639,7 @@
                     }
                     else
                     {
-                        var _loc_23:String = this;
-                        var _loc_24:* = this.curStep + 1;
-                        _loc_23.curStep = _loc_24;
+                      this.curStep++;
                         this.finishStep();
                         this.run();
                     }
@@ -676,9 +656,7 @@
                     }
                     else
                     {
-                        var _loc_23:String = this;
-                        var _loc_24:* = this.curStep + 1;
-                        _loc_23.curStep = _loc_24;
+                       this.curStep++;
                         this.finishStep();
                         this.run();
                     }
@@ -776,9 +754,7 @@
                     }
                     else
                     {
-                        var _loc_23:String = this;
-                        var _loc_24:* = this.curStep + 1;
-                        _loc_23.curStep = _loc_24;
+                       this.curStep++;
                         this.finishStep();
                         this.run();
                     }
@@ -819,9 +795,7 @@
                     }
                     else
                     {
-                        var _loc_23:String = this;
-                        var _loc_24:* = this.curStep + 1;
-                        _loc_23.curStep = _loc_24;
+                        this.curStep++;
                         this.finishStep();
                         this.run();
                     }
@@ -863,9 +837,7 @@
                     }
                     else
                     {
-                        var _loc_23:String = this;
-                        var _loc_24:* = this.curStep + 1;
-                        _loc_23.curStep = _loc_24;
+                       this.curStep++;
                         this.finishStep();
                         this.run();
                     }
@@ -896,9 +868,7 @@
                     }
                     else
                     {
-                        var _loc_23:String = this;
-                        var _loc_24:* = this.curStep + 1;
-                        _loc_23.curStep = _loc_24;
+                       this.curStep++;
                         this.finishStep();
                         this.run();
                     }
@@ -921,9 +891,7 @@
                     }
                     else
                     {
-                        var _loc_23:String = this;
-                        var _loc_24:* = this.curStep + 1;
-                        _loc_23.curStep = _loc_24;
+                        this.curStep++;
                         this.finishStep();
                         this.run();
                     }
@@ -944,9 +912,7 @@
                     }
                     else
                     {
-                        var _loc_23:String = this;
-                        var _loc_24:* = this.curStep + 1;
-                        _loc_23.curStep = _loc_24;
+                        this.curStep++;
                         this.finishStep();
                         this.run(1);
                     }
@@ -1041,9 +1007,7 @@
                     }
                     else
                     {
-                        var _loc_23:String = this;
-                        var _loc_24:* = this.curStep + 1;
-                        _loc_23.curStep = _loc_24;
+                       this.curStep++;
                         this.finishStep();
                         this.run();
                     }
@@ -1057,9 +1021,7 @@
                     }
                     else
                     {
-                        var _loc_23:String = this;
-                        var _loc_24:* = this.curStep + 1;
-                        _loc_23.curStep = _loc_24;
+                        this.curStep++;
                         this.finishStep();
                         this.run();
                     }
@@ -1076,9 +1038,7 @@
                     }
                     else
                     {
-                        var _loc_23:String = this;
-                        var _loc_24:* = this.curStep + 1;
-                        _loc_23.curStep = _loc_24;
+                        this.curStep++;
                         this.finishStep();
                         this.run();
                     }
@@ -1216,9 +1176,7 @@
 
         public function endScene11() : void
         {
-            var _loc_1:String = this;
-            var _loc_2:* = this.curStep + 1;
-            _loc_1.curStep = _loc_2;
+            this.curStep++;
             this.timer.start();
             this.timer.addEventListener(TimerEvent.TIMER, this.endTimer);
             return;
@@ -1468,9 +1426,7 @@
             if (this.curStep >= GameDataMgr.getInstance().myInfo.tutStep)
             {
                 CityMgr.getInstance().sendFinishTutorialCmd();
-                var _loc_1:String = this;
-                var _loc_2:* = this.temp + 1;
-                _loc_1.temp = _loc_2;
+                this.temp++;
             }
             return;
         }// end function
@@ -1478,9 +1434,7 @@
         public function nextStep(param1:int = 0) : void
         {
             this.finishStep();
-            var _loc_2:String = this;
-            var _loc_3:* = this.curStep + 1;
-            _loc_2.curStep = _loc_3;
+           this.curStep++;
             this.run(param1);
             return;
         }// end function

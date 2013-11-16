@@ -45,10 +45,8 @@
         }// end function
 
         private function onTick(event:TimerEvent) : void
-        {
-            var _loc_2:String = this;
-            var _loc_3:* = this.leftTime - 1;
-            _loc_2.leftTime = _loc_3;
+        {          
+            this.leftTime--;
             if (this.leftTime <= 1)
             {
                 this.timer.stop();
