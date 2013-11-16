@@ -238,7 +238,7 @@
             var _loc_4:Number = 1.5;
             if (this.mapObject.type == BuildingType.TOWN_HALL)
             {
-                var _loc_5:int = 1;
+                //var _loc_5:int = 1;
                 _loc_2.scaleY = 1;
                 _loc_2.scaleX = _loc_5;
                 _loc_4 = 2.5;

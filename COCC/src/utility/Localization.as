@@ -40,7 +40,7 @@
             var _loc_7:int = 0;
             var _loc_8:* = this.data.language;
             var _loc_6:* = new XMLList("");
-            for each (_loc_9 in _loc_8)
+            for each (var _loc_9:* in _loc_8)
             {
                 
                 var _loc_10:* = _loc_8[_loc_7];
@@ -85,9 +85,7 @@
             var urlLoader:URLLoader;
             var afterLoading:* = param1;
             urlLoader = new URLLoader();
-            with ({})
-            {
-                {}.initSharedInstance = function (event:Event) : void
+            var initSharedInstance:Function = function (event:Event) : void
             {
                 instance = new Localization();
                 instance.data = new XML(event.target.data);
@@ -100,8 +98,7 @@
                 }
                 return;
             }// end function
-            ;
-            }
+           
             urlLoader.addEventListener(Event.COMPLETE, function (event:Event) : void
             {
                 instance = new Localization();

@@ -2,6 +2,7 @@
 {
     import flash.accessibility.*;
     import flash.display.*;
+	import flash.events.IEventDispatcher;
     import flash.geom.*;
 
     public interface IFlexDisplayObject extends IBitmapDrawable, IEventDispatcher

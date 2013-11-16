@@ -351,7 +351,7 @@
                 _loc_3 = _loc_6[_loc_5];
                 try
                 {
-                    if (param1[_loc_3] is Vector.<null>)
+                    if (param1[_loc_3] is Vector)
                     {
                         _loc_4 = getDefinitionByName(getQualifiedClassName(param1[_loc_3][0])) as Class;
                     }

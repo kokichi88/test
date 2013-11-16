@@ -87,8 +87,8 @@
             if (this._enableConsoleTrace)
             {
             }
-            var _loc_4:Object = {};
-            {}.message = param2;
+            var _loc_4:Object = { };
+            _loc_4.message = param2;
             var _loc_5:LoggerEvent = null;
             if (this._enableEventDispatching)
             {
