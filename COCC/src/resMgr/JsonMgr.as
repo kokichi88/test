@@ -74,7 +74,7 @@
         public function getAmbienceRandom() : DataSound
         {
             var _loc_1:* = new DataSound();
-            var _loc_2:* = Math.random() * this.ambience.length;
+            var _loc_2:* = int(Math.random() * this.ambience.length);
             var _loc_3:* = this.ambience[_loc_2];
             _loc_1.name = _loc_3.Name;
             _loc_1.volume = _loc_3.Volume;

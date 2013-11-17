@@ -57,9 +57,8 @@
             args = null;
             var _loc_4:Function = null;
             if (param1 in this.funcList)
-            {
-                args = this.funcList[param1];
-                _loc_4 = args["function"] as Function;
+            { 
+                _loc_4 = this.funcList[param1]["function"];
                 return _loc_4.apply(null, args);
             }
             return;

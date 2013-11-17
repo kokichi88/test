@@ -16,7 +16,7 @@
             {
                 throw new Error("Cannot instantiate the Logger using the constructor. Please use the getInstance() method");
             }
-            this._loggingLevel = LogLevel.INFO;
+            this._loggingLevel = LogLevel.DEBUG;
             return;
         }// end function
 
