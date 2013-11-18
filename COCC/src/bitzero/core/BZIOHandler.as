@@ -173,8 +173,8 @@
 		
 		private function resizeByteArray(param1:ByteArray, param2:int, param3:int):ByteArray
 		{
-			var _loc_4:* = new ByteArray();
-			new ByteArray().writeBytes(param1, param2, param3);
+			var _loc_4:ByteArray = new ByteArray();
+			_loc_4.writeBytes(param1, param2, param3);
 			_loc_4.position = 0;
 			return _loc_4;
 		} // end function
@@ -198,11 +198,11 @@
 			writeBuffer = new ByteArray();
 			binData = message.content;
 			binData.position = 0;
-			isCompressed;
+			isCompressed = false;
 			if (binData.length > this.ezClient.compressionThreshold)
 			{
 				binData.compress();
-				isCompressed;
+				isCompressed = true;
 			}
 			sizeBytes = SHORT_BYTE_SIZE;
 			if (binData.length > 65535)
