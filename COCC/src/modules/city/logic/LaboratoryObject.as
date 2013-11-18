@@ -112,10 +112,15 @@
                 return;
             }
             this.showEffect = true;
-            this.aniEffect = EffectDraw.play("researching", new Point(0, -70), avatar, 0);
-            var _loc_1:int = 2;
+            var _loc_1:* = new Point(0, -70);
+            if (level == 5)
+            {
+                _loc_1.y = _loc_1.y - 25;
+            }
+            this.aniEffect = EffectDraw.play("researching", _loc_1, avatar, 0);
+            var _loc_2:int = 2;
             this.aniEffect.scaleY = 2;
-            this.aniEffect.scaleX = _loc_1;
+            this.aniEffect.scaleX = _loc_2;
             this.aniEffect.blendMode = BlendMode.SCREEN;
             CityMgr.getInstance().effectList.push(this.aniEffect);
             return;
@@ -124,7 +129,7 @@
         public function finishResearch() : void
         {
             GameDataMgr.getInstance().troopLevelUp(this.troopType);
-            CityMgr.getInstance().guiTrainTroop.updateTroopLevel(this.troopType);
+            CityMgr.getInstance().guiTrainTroop2.updateTroopLevel(this.troopType);
             var _loc_1:* = Localization.getInstance().getString("FinishResearch");
             _loc_1 = _loc_1.replace("@name@", Localization.getInstance().getString(this.troopType));
             _loc_1 = _loc_1.replace("@level@", GameDataMgr.getInstance().getTroopLevel(this.troopType));

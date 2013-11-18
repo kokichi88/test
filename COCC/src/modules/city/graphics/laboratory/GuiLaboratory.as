@@ -2,6 +2,7 @@
 {
     import __AS3__.vec.*;
     import component.*;
+    import flash.display.*;
     import flash.events.*;
     import flash.text.*;
     import gameData.*;
@@ -15,12 +16,18 @@
     {
         private var listItem:Vector.<GuiLaboratotyItem>;
         public var labelLaboratory:TextField;
+        public var bmpNext:BitmapButton;
+        public var bmpPrev:BitmapButton;
+        public var pageItem:PageMgr;
         private static const MAX_TROOP:int = 10;
+        private static const MAX_SPELL:int = 5;
+        private static const NUM_ROW:int = 2;
+        private static const NUM_COL:int = 5;
         private static const BMP_CLOSE:String = "bmpClose";
-        private static var startX:Number = 70;
-        private static var startY:Number = 170;
+        private static const BMP_NEXT:String = "bmpNext";
+        private static const BMP_PREV:String = "bmpPrev";
         private static var padingX:Number = 9;
-        private static var padingY:Number = 11;
+        private static var padingY:Number = 135;
 
         public function GuiLaboratory()
         {
@@ -29,7 +36,48 @@
             autoAlign = AUTO_ALIGN_CENTER;
             enableDisableScreen = true;
             enableClickOutToClose = true;
+            this.pageItem = new PageMgr(img);
+            this.pageItem.x = 64;
+            this.pageItem.y = 170;
             this.init();
+            return;
+        }// end function
+
+        private function init() : void
+        {
+            var _loc_1:int = 0;
+            var _loc_2:GuiLaboratotyItem = null;
+            var _loc_7:int = 0;
+            var _loc_8:int = 0;
+            _loc_1 = 0;
+            while (_loc_1 < MAX_TROOP)
+            {
+                
+                _loc_2 = new GuiLaboratotyItem();
+                _loc_2.disableItem();
+                this.listItem.push(_loc_2);
+                _loc_1++;
+            }
+            var _loc_3:Number = 560;
+            var _loc_4:Number = 315;
+            var _loc_5:Number = 6;
+            var _loc_6:* = new Sprite();
+            _loc_1 = 0;
+            while (_loc_1 < this.listItem.length)
+            {
+                
+                _loc_7 = _loc_5 + _loc_1 % NUM_COL * (this.listItem[_loc_1].widthBg + padingX) + int(_loc_1 / 10) * _loc_3;
+                _loc_8 = Math.floor(_loc_1 % 10 / NUM_COL) * padingY;
+                _loc_6.addChild(this.listItem[_loc_1].bgImg);
+                this.listItem[_loc_1].setPos(_loc_7, _loc_8);
+                _loc_1++;
+            }
+            this.pageItem.setData(_loc_6, _loc_3, _loc_4, 0, PageMgr.HOZIRONTOL, true, 1);
+            var _loc_9:* = this.pageItem.totalPage > 1;
+            this.bmpPrev.visible = this.pageItem.totalPage > 1;
+            this.bmpNext.visible = _loc_9;
+            this.bmpNext.enable = this.pageItem.canNext();
+            this.bmpPrev.enable = this.pageItem.canPrev();
             return;
         }// end function
 
@@ -83,23 +131,25 @@
             return;
         }// end function
 
-        private function init() : void
+        private function loadSpellResearch() : void
         {
-            var _loc_2:GuiLaboratotyItem = null;
-            var _loc_3:int = 0;
+            var _loc_5:String = null;
+            var _loc_6:int = 0;
+            var _loc_7:int = 0;
+            var _loc_8:int = 0;
+            var _loc_9:DataSpell = null;
+            var _loc_1:* = JsonMgr.getInstance().spellBase;
+            var _loc_2:* = Utility.getSpellFactoryLevel();
+            var _loc_3:* = GameDataMgr.getInstance().laboratory;
             var _loc_4:int = 0;
-            var _loc_1:int = 0;
-            while (_loc_1 < MAX_TROOP)
+            while (_loc_4 < MAX_SPELL)
             {
                 
-                _loc_2 = new GuiLaboratotyItem();
-                _loc_3 = startX + (_loc_2.widthBg + padingX) * (_loc_1 % 5);
-                _loc_4 = startY + (_loc_2.heightBg + padingY) * int(_loc_1 / 5);
-                _loc_2.setPos(_loc_3, _loc_4);
-                _loc_2.disableItem();
-                addGui(_loc_2);
-                this.listItem.push(_loc_2);
-                _loc_1++;
+                _loc_5 = "SPE_" + (_loc_4 + 1);
+                this.listItem[MAX_TROOP + _loc_4].loadSpellItem(_loc_5);
+                this.listItem[MAX_TROOP + _loc_4].enableItem();
+                ;
+                _loc_4++;
             }
             return;
         }// end function
@@ -117,6 +167,10 @@
                 _loc_3++;
             }
             this.loadTroopResearch();
+            if (GameDataMgr.getInstance().spellFactory)
+            {
+                this.loadSpellResearch();
+            }
             return;
         }// end function
 
@@ -127,6 +181,20 @@
                 case BMP_CLOSE:
                 {
                     this.hide(true);
+                    break;
+                }
+                case BMP_NEXT:
+                {
+                    this.pageItem.nextPage();
+                    this.bmpNext.enable = this.pageItem.canNext();
+                    this.bmpPrev.enable = this.pageItem.canPrev();
+                    break;
+                }
+                case BMP_PREV:
+                {
+                    this.pageItem.prevPage();
+                    this.bmpNext.enable = this.pageItem.canNext();
+                    this.bmpPrev.enable = this.pageItem.canPrev();
                     break;
                 }
                 default:

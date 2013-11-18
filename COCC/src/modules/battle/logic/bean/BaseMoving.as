@@ -40,7 +40,7 @@
             if (this.curLoopRun < this.numLoopRun)
             {
                 this.x = this.x + this.dxChange;
-                this.y = this.y + this.dyChange;              
+                this.y = this.y + this.dyChange;
                 this.curLoopRun++;
             }
             else if (this.path && this.path.length > 0)

@@ -238,7 +238,7 @@
             }
             else
             {
-                url = new URLRequest(Config.getStaticUrl() + "sound/" + name);
+                url = new URLRequest(Config.getStaticUrl() + "sound/" + name + "?v=" + Config.gameVersion);
                 bg = new Sound();
                 bg.addEventListener(IOErrorEvent.IO_ERROR, function (event:IOErrorEvent) : void
             {
@@ -308,7 +308,7 @@
             }
             else
             {
-                url = new URLRequest(Config.getStaticUrl() + "sound/sfx/" + name);
+                url = new URLRequest(Config.getStaticUrl() + "sound/sfx/" + name + "?v=" + Config.gameVersion);
                 sound = new Sound(url);
                 sound.addEventListener(IOErrorEvent.IO_ERROR, function (event:IOErrorEvent) : void
             {
@@ -429,7 +429,7 @@
                     name = dataSound.name;
                     vol = dataSound.volume / 100;
                     pan;
-                    url = new URLRequest(Config.getStaticUrl() + "sound/ambience/" + name);
+                    url = new URLRequest(Config.getStaticUrl() + "sound/ambience/" + name + "?v=" + Config.gameVersion);
                     if (name in this.soundList)
                     {
                         bg = this.soundList[name];

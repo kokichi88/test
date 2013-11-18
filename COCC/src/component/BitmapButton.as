@@ -43,6 +43,7 @@
         public static const BTN_OVER:int = 1;
         public static const BTN_DOWN:int = 2;
         public static const BTN_DISABLE:int = 3;
+        public static const BTN_DOWN_2:int = 4;
         private static const blinkFilter:ColorMatrixFilter = new ColorMatrixFilter([0.5, 0.5, 0.5, 0, 0, 0, 0.3, 0.3, 0.3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0]);
 
         public function BitmapButton(param1:MovieClip = null, param2:int = 4)
@@ -96,7 +97,7 @@
             var _loc_2:* = this.img.width / (2 * this.nFrame);
             var _loc_3:* = this.img.height / 2;
             var _loc_4:* = new Matrix();
-            new Matrix().translate(-_loc_2, -_loc_3);
+           _loc_4.translate(-_loc_2, -_loc_3);
             _loc_4.rotate(this.curRotateImg * (Math.PI / 180));
             _loc_4.translate(this.imgX + _loc_2, this.imgY + _loc_3);
             this.img.transform.matrix = _loc_4;
@@ -369,6 +370,10 @@
                     {
                         this.img.filters = [disableFilter];
                         this.setDy(0);
+                        break;
+                    }
+                    case BTN_DOWN_2:
+                    {
                         break;
                     }
                     default:

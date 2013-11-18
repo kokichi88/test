@@ -156,7 +156,7 @@
             this.totalDonation = this.totalDonation + param1.num;
             this.labelTroop.text = this.totalDonation + "/" + GlobalVar.CLAN_MAX_DONATION;
             var _loc_4:* = new Troop();
-            new Troop().type = param1.type;
+            _loc_4.type = param1.type;
             _loc_4.num = -param1.num;
             _loc_4.level = param1.level;
             Utility.addTroop(_loc_4, GameDataMgr.getInstance().troopList);

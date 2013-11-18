@@ -546,7 +546,7 @@
         public function addGUI_Parent(param1:BaseGui, param2:String, param3:Boolean = true) : void
         {
             var _loc_4:* = new Object();
-            new Object().gui = param1;
+            _loc_4.gui = param1;
             _loc_4.id = param2;
             this.guiList.push(_loc_4);
             this.img.addChild(param1.bgImg);
@@ -608,7 +608,7 @@
         {
             var _loc_7:EmbedFormat = null;
             var _loc_6:* = new TextField();
-            new TextField().mouseEnabled = false;
+            _loc_6.mouseEnabled = false;
             _loc_6.text = param1;
             _loc_6.mouseEnabled = false;
             _loc_6.embedFonts = true;

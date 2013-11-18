@@ -42,6 +42,7 @@
 
         override public function parseBody() : Boolean
         {
+			
             var _loc_1:int = 0;
             var _loc_2:int = 0;
             var _loc_3:Object = null;
@@ -226,6 +227,7 @@
             this.clanCastle.lastRequestTime = readLong();
             _loc_1 = readInt();
             _loc_2 = 0;
+			return true;
             while (_loc_2 < _loc_1)
             {
                 

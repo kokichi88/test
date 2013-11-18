@@ -265,7 +265,7 @@
             var _loc_7:String = null;
             var _loc_4:String = "";
             var _loc_5:* = new Date();
-            new Date().setTime((param1 + 7 * 3600) * 1000);
+            _loc_5.setTime((param1 + 7 * 3600) * 1000);
             if (param3)
             {
                 if (_loc_5.getUTCMinutes() < 10)
@@ -339,33 +339,29 @@
             return _loc_4;
         }// end function
 
-        public static function setData(param1:Object, param2:Object) : void
-        {
-            var _loc_3:String = null;
-            var _loc_4:Class = null;
-            var _loc_5:int = 0;
-            var _loc_6:* = param2;
-            do
-            {
-                
-                _loc_3 = _loc_6[_loc_5];
-                try
-                {
-                    if (param1[_loc_3] is Vector)
-                    {
-                        _loc_4 = getDefinitionByName(getQualifiedClassName(param1[_loc_3][0])) as Class;
-                    }
-                    else
-                    {
-                        param1[_loc_3] = param2[_loc_3];
-                    }
-                }
-                catch (err:Error)
-                {
-                }
-            }while (_loc_6 in _loc_5)
-            return;
-        }// end function
+         public static function setData(arg0:Object, arg1:Object):void
+			{
+					var local0:* = null;
+					var class1:Class = null;
+					var local2:* = 0;
+					var local3:* = arg1;
+					for(local0 in local3)
+					{
+						try{
+							if(arg0[local0] is Vector)
+							{
+									class1 = Class(flash.utils.getDefinitionByName(flash.utils.getQualifiedClassName(arg0[local0][0])));
+							}
+							else
+							{
+									arg0[local0] = arg1[local0];
+							}
+						}catch (e:Error)
+						{
+							trace("util:setData", e.message);
+						}
+					}
+			}
 
         public static function getProperties(param1) : Array
         {
@@ -390,7 +386,7 @@
             var _loc_3:* = new ByteArray();
             _loc_3.writeObject(param1);
             var _loc_4:* = new ByteArray();
-            new ByteArray().writeObject(param2);
+            _loc_4.writeObject(param2);
             var _loc_5:* = _loc_3.length;
             if (_loc_3.length == _loc_4.length)
             {
@@ -565,6 +561,20 @@
             return _loc_2;
         }// end function
 
+        public static function getTooltipSpell(param1:Troop) : DisplayObject
+        {
+            var _loc_2:* = new Sprite();
+            var _loc_3:* = new TooltipText(true, false, true);
+            var _loc_4:String = "";
+            _loc_4 = "<p align=\'center\'><b><font size =\'20\' color =\'#FFFF00\' >";
+            _loc_4 = _loc_4 + getName(param1.type);
+            _loc_4 = _loc_4 + "</font></b></p>";
+            _loc_3.htmlText = _loc_4;
+            var _loc_5:int = 5;
+            _loc_2.addChild(_loc_3);
+            return _loc_2;
+        }// end function
+
         public static function getTooltipMapObject(param1:String, param2:int) : DisplayObject
         {
             var _loc_6:TooltipText = null;
@@ -727,10 +737,11 @@
             var _loc_18:BuilderObject = null;
             var _loc_19:WallObject = null;
             var _loc_20:TrapObject = null;
+            var _loc_21:SpellFactoryObject = null;
             var _loc_3:* = new DataBuildingInfo();
             _loc_3.type = param1;
             var _loc_4:* = new MapObject();
-            new MapObject().type = param1;
+            _loc_4.type = param1;
             _loc_4.level = param2;
             _loc_5 = MapMgr.copyMapObject(_loc_4);
             _loc_3.curCount = GameDataMgr.getInstance().getCurrentBuildingNumber(_loc_5.type);
@@ -872,6 +883,15 @@
                     }
                     _loc_3.buildTime = 0;
                     _loc_3.townHallLevelRequired = _loc_20.info.townHallLevelRequired;
+                    break;
+                }
+                case BuildingType.SPELL_FACTORY:
+                {
+                    _loc_21 = _loc_5 as SpellFactoryObject;
+                    _loc_3.cost.type = MoneyType.ELIXIR;
+                    _loc_3.cost.value = _loc_21.info.elixir;
+                    _loc_3.buildTime = _loc_21.info.buildTime;
+                    _loc_3.townHallLevelRequired = _loc_21.info.townHallLevelRequired;
                     break;
                 }
                 default:
@@ -1175,6 +1195,16 @@
                     _loc_1 = _loc_2[_loc_3].level;
                 }
                 _loc_3++;
+            }
+            return _loc_1;
+        }// end function
+
+        public static function getSpellFactoryLevel() : int
+        {
+            var _loc_1:int = 0;
+            if (GameDataMgr.getInstance().spellFactory)
+            {
+                _loc_1 = GameDataMgr.getInstance().spellFactory.level;
             }
             return _loc_1;
         }// end function

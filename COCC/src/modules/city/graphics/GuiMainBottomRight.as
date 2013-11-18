@@ -108,7 +108,8 @@
                 case BMP_ACTTACK:
                 {
                     _loc_3 = GameDataMgr.getInstance().getCurrentHousingSpace();
-                    _loc_4 = GameDataMgr.getInstance().clanCastle.troopList.length;
+                    //_loc_4 = GameDataMgr.getInstance().clanCastle.troopList.length;
+                    _loc_4 = 0;
                     if (_loc_3 > 0 || _loc_4 > 0)
                     {
                         CityMgr.getInstance().guiFindMath.show(LayerMgr.getInstance().getLayer(GlobalVar.LAYER_GUI), true);

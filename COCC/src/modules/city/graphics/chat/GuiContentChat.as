@@ -78,6 +78,11 @@
             return;
         }// end function
 
+        override public function show(param1:Sprite = null, param2:Boolean = false) : void
+        {
+            return;
+        }// end function
+
         private function onKeyDown(event:KeyboardEvent) : void
         {
             switch(event.keyCode)
@@ -177,7 +182,7 @@
             _loc_3.created = Utility.getCurTime();
             this.troopRequests[param1.sender] = _loc_3;
             var _loc_4:* = new ChatItem();
-            new ChatItem().uId = param1.sender;
+            _loc_4.uId = param1.sender;
             _loc_4.setRequestType(_loc_3);
             this.spChat.addChild(_loc_4);
             _loc_4.x = 10;
@@ -492,7 +497,7 @@
                 param2 = Utility.getClanSystemMessage(param2);
             }
             var _loc_4:* = new ChatItem();
-            new ChatItem().setMessageType(param1, param2, Utility.getCurTime(), param3);
+           _loc_4.setMessageType(param1, param2, Utility.getCurTime(), param3);
             this.spChat.addChild(_loc_4);
             _loc_4.x = 10;
             _loc_4.y = this.startY;

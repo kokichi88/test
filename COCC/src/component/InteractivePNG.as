@@ -94,7 +94,7 @@
             this._bitmapForHitDetection.name = "interactivePngHitMap";
             this._bitmapForHitDetection.visible = false;
             var _loc_7:* = new Matrix();
-            new Matrix().translate(-_loc_4, -_loc_5);
+            _loc_7.translate(-_loc_4, -_loc_5);
             _loc_6.draw(this, _loc_7);
             addChildAt(this._bitmapForHitDetection, 0);
             this._bitmapForHitDetection.x = _loc_4;

@@ -103,8 +103,9 @@
             var _loc_12:ClanObject = null;
             var _loc_13:WallObject = null;
             var _loc_14:BuilderObject = null;
-            var _loc_15:BarrackObject = null;
-            var _loc_16:TownHallObject = null;
+            var _loc_15:SpellFactoryObject = null;
+            var _loc_16:BarrackObject = null;
+            var _loc_17:TownHallObject = null;
             if (!param1)
             {
                 return;
@@ -130,14 +131,14 @@
             {
                 case BuildingType.BAR:
                 {
-                    _loc_15 = param1 as BarrackObject;
-                    this.setBarrackCurrentIndexes(_loc_15);
+                    _loc_16 = param1 as BarrackObject;
+                    this.setBarrackCurrentIndexes(_loc_16);
                     break;
                 }
                 case BuildingType.TOW:
                 {
-                    _loc_16 = param1 as TownHallObject;
-                    this.setTownHallCurrentIndexes(_loc_16);
+                    _loc_17 = param1 as TownHallObject;
+                    this.setTownHallCurrentIndexes(_loc_17);
                     break;
                 }
                 case BuildingType.LAB:
@@ -195,12 +196,30 @@
                     this.setTrapInfo(param1);
                     break;
                 }
+                case BuildingType.SPF:
+                {
+                    _loc_15 = param1 as SpellFactoryObject;
+                    this.setSpellFactoryInfo(_loc_15);
+                    break;
+                }
                 default:
                 {
                     break;
                 }
             }
             this.curBuilding = param1;
+            return;
+        }// end function
+
+        private function setSpellFactoryInfo(param1:SpellFactoryObject) : void
+        {
+            var _loc_2:int = 0;
+            this.guiTroopInside.labelTitleInside.text = "Bình phép thuật: " + _loc_2 + "/" + param1.info.capacity;
+            _loc_2 = GameDataMgr.getInstance().spellList.length;
+            this.addIndexItem(GuiUpgradeBuildingItem.ICON_SPELL_CAPACITY, _loc_2, param1.info.capacity, 0);
+            this.addIndexItem(GuiUpgradeBuildingItem.ICON_HITPOINTS, param1.info.hitpoints, 0, 1);
+            this.guiTroopInside.loadSpellInside(GameDataMgr.getInstance().spellList);
+            this.guiTroopInside.bgImg.visible = true;
             return;
         }// end function
 
@@ -222,6 +241,7 @@
 
         private function removeAllItem() : void
         {
+            this.guiTroopInside.bgImg.visible = false;
             this.labelTextWait.visible = false;
             this.labelTimeWait.visible = false;
             this.labelTextSafe.visible = false;
@@ -245,7 +265,7 @@
         private function addIndexItem(param1:String, param2:int, param3:int, param4:int, param5:Boolean = false) : void
         {
             var _loc_6:* = new GuiUpgradeBuildingItem();
-            new GuiUpgradeBuildingItem().loadInfoItem(param1, param2, param3, param5);
+            _loc_6.loadInfoItem(param1, param2, param3, param5);
             addGui(_loc_6);
             _loc_6.setPos(startIconX, startIconY + param4 * (_loc_6.heightBg + 5));
             this.listItem.push(_loc_6);

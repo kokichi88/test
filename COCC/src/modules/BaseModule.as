@@ -6,7 +6,7 @@
     public class BaseModule extends Object
     {
         protected var priority:int = 0;
-        protected var bzConnector:BZConnector;
+        public var bzConnector:BZConnector;
         protected var logger:Logger;
         public static const DEFAULT_PRIORITY:int = 0;
 

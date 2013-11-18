@@ -66,7 +66,12 @@
 
         override public function finishBuilding(param1:int) : void
         {
+            var _loc_2:* = status;
             super.finishBuilding(param1);
+            if (_loc_2 == BUILDING)
+            {
+                CityMgr.getInstance().guiTrainTroop2.loadBarracks();
+            }
             if (this.deltaPauseTime > 0)
             {
                 startTime = Utility.getCurTime() - this.deltaPauseTime;
@@ -92,7 +97,10 @@
                 _loc_3 = avatar.y - avatarHeight - this.statusIcon.heightBg / 2;
                 this.statusIcon.setPos(_loc_2, _loc_3);
                 this.statusIcon.setStatus(param1);
-                this.statusIcon.show(LayerMgr.getInstance().getLayer(GlobalVar.LAYER_INFO));
+                if (!this.statusIcon.isShowing)
+                {
+                    this.statusIcon.show(LayerMgr.getInstance().getLayer(GlobalVar.LAYER_INFO));
+                }
             }
             return;
         }// end function
@@ -283,7 +291,7 @@
             var _loc_7:* = _loc_2[NUM] - 1;
             _loc_5[_loc_6] = _loc_7;
             var _loc_4:* = new Troop();
-            new Troop().type = _loc_2.type;
+            _loc_4.type = _loc_2.type;
             _loc_4.num = 1;
             _loc_4.level = GameDataMgr.getInstance().getTroopLevel(_loc_2.type);
             Utility.addTroop(_loc_4, GameDataMgr.getInstance().troopList);
@@ -302,7 +310,7 @@
         {
             var _loc_3:int = 0;
             var _loc_4:int = 0;
-            var _loc_5:GuiTrainTroop = null;
+            var _loc_5:GuiTrainTroop2 = null;
             var _loc_6:Boolean = false;
             var _loc_7:Number = NaN;
             var _loc_8:int = 0;
@@ -336,11 +344,11 @@
             {
                 if (_loc_2 != "")
                 {
-                    _loc_5 = CityMgr.getInstance().guiTrainTroop;
-                    _loc_6 = _loc_5.isShowing && _loc_5.barrackList[_loc_5.curBarrackId] == this;
+                    _loc_5 = CityMgr.getInstance().guiTrainTroop2;
+                    _loc_6 = _loc_5.isShowing && _loc_5.curBarrackId != -1 && _loc_5.barrackList[_loc_5.curBarrackId] == this;
                     _loc_7 = this.getRemainTime();
                     _loc_8 = this.objConf[_loc_2]["trainingTime"];
-                    if (_loc_6 && _loc_5.barrackList[_loc_5.curBarrackId] == this)
+                    if (_loc_6 && _loc_5.curBarrackId != -1 && _loc_5.barrackList[_loc_5.curBarrackId] == this)
                     {
                         _loc_5.updateCtnTrainTroop(_loc_7);
                         if (this.isStopped)
@@ -358,7 +366,7 @@
                         else
                         {
                             this.isStopped = true;
-                            if (_loc_6 && _loc_5.barrackList[_loc_5.curBarrackId] == this)
+                            if (_loc_6 && _loc_5.curBarrackId != -1 && _loc_5.barrackList[_loc_5.curBarrackId] == this)
                             {
                                 _loc_5.showStop();
                             }

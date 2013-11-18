@@ -1,13 +1,17 @@
 ﻿package 
 {
+	import bitzero.net.data.BaseCmd;
     import flash.display.*;
     import flash.events.*;
     import flash.geom.*;
     import flash.ui.*;
     import flash.utils.*;
+	import gameData.MoneyType;
     import map.logic.*;
     import modules.battle.*;
+	import modules.city.CityMgr;
     import modules.city.graphics.tutorial.*;
+	import network.Command;
     import resMgr.*;
     import utility.*;
 
@@ -65,6 +69,7 @@
             {
                 case Keyboard.S:
                 {
+					BattleModule.getInstance().onClickMap();
                     break;
                 }
                 case Keyboard.G:
@@ -93,6 +98,7 @@
                 }
                 case Keyboard.F1:
                 {
+					doCheat();
                     break;
                 }
                 case Keyboard.F2:
@@ -122,6 +128,27 @@
             }
             return;
         }// end function
+		
+		private function doCheat():void 
+		{
+			var o:Object = JsonMgr.getInstance().sideQuest;
+			//for (var s:String in o)
+			//{
+				//var quests:Object = o[s];
+				//for (var qid:String in quests)
+				//{
+					//CityMgr.getInstance().sendClaimRewardCmd(s, int(qid));
+					//return;
+				//}
+			//}
+			//var baseCmd:BaseCmd = new BaseCmd(Command.CHEAT_PLAYER_INFO);
+			//CityMgr.getInstance().bzConnector.send(baseCmd);
+			//CityMgr.getInstance().sendFinishTutorialCmd();
+			CityMgr.getInstance().sendBuyResource(MoneyType.GOLD, 3000000000, 2);
+			 //CityMgr.getInstance().sendTrainTroopCmd(10005, "ARM_1", 0);
+			//var i:int = Utility.getCostToBuyTime(3000000000).value;
+			//trace("buy", i);
+		}
 
         public function onMouseDown(event:MouseEvent) : void
         {

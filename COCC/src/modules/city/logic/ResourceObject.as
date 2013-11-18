@@ -177,8 +177,11 @@
                     _loc_5 = _loc_4.getItemHarvest();
                     if (_loc_5 != -1)
                     {
-                        _loc_4.listItem[_loc_5].bmpActionItem.enable = this.curResource > 0;
-                        _loc_4.listItem[_loc_5].alpha = this.curResource > 0 ? (1) : (0.6);
+                        if (_loc_4.listItem[_loc_5].bmpActionItem.enable != this.curResource > 0)
+                        {
+                            _loc_4.listItem[_loc_5].bmpActionItem.enable = this.curResource > 0;
+                            _loc_4.listItem[_loc_5].alpha = this.curResource > 0 ? (1) : (0.6);
+                        }
                     }
                 }
                 if (this.numLoop > 0)

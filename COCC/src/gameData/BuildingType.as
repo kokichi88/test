@@ -6,6 +6,7 @@
         public static var TOWN_HALL:String = "TOW_1";
         public static var ARMY_CAMP:String = "AMC_1";
         public static var BARRACK:String = "BAR_1";
+        public static var SPELL_FACTORY:String = "SPF_1";
         public static var GOLD_MINE:String = "RES_1";
         public static var ELIXIR_COLLECTOR:String = "RES_2";
         public static var DARK_ELIXIR_COLLECTOR:String = "RES_3";
@@ -27,6 +28,11 @@
         public static var TRA_3:String = "TRA_3";
         public static var TRA_4:String = "TRA_4";
         public static var TRA_5:String = "TRA_5";
+        public static var LIGHTING_SPELL:String = "SPE_1";
+        public static var HEALING_SPELL:String = "SPE_2";
+        public static var RAGE_SPELL:String = "SPE_3";
+        public static var JUMP_SPELL:String = "SPE_4";
+        public static var SANTA_SURPRISE:String = "SPE_5";
         public static var DEF:String = "DEF";
         public static var RES:String = "RES";
         public static var STO:String = "STO";
@@ -40,6 +46,9 @@
         public static var CLAN:String = "CLC";
         public static var OBS:String = "OBS";
         public static var TRA:String = "TRA";
+        public static var SPF:String = "SPF";
+        public static var TROOP:String = "ARM";
+        public static var SPELL:String = "SPE";
 
         public function BuildingType()
         {

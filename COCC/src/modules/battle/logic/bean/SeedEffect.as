@@ -112,7 +112,7 @@
                 _loc_11.addChild(this.sp);
             }
             var _loc_7:* = new Shape();
-            new Shape().graphics.beginFill(65280);
+           _loc_7.graphics.beginFill(65280);
             _loc_7.graphics.drawCircle(0, 0, 8);
             _loc_7.graphics.endFill();
             _loc_7.x = param2;

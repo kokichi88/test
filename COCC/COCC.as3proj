@@ -6,8 +6,8 @@
     <movie input="" />
     <movie path="bin\COCC.swf" />
     <movie fps="30" />
-    <movie width="800" />
-    <movie height="600" />
+    <movie width="1366" />
+    <movie height="644" />
     <movie version="11" />
     <movie minorVersion="6" />
     <movie platform="Flash Player" />

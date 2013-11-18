@@ -34,7 +34,7 @@
 
         public static function getURL(param1:String, param2:String) : String
         {
-            return Config.getStaticUrl() + resURL + param1 + "/" + param2 + ".jta";
+            return Config.getStaticUrl() + resURL + param1 + "/" + param2 + ".jta" + "?v=" + Config.gameVersion;
         }// end function
 
         public static function getEquipAn(param1:String, param2:int, param3:int) : String
@@ -50,22 +50,22 @@
             }
             param3 = (param3 - 4) % 8 - 1;
             var _loc_5:* = param3 * frameList[param2] + param4;
-            return imgAvatarURL + param1 + "/act" + param2 + "/img_" + _loc_5 + ".png";
+            return imgAvatarURL + param1 + "/act" + param2 + "/img_" + _loc_5 + ".png" + "?v=" + Config.gameVersion;
         }// end function
 
         public static function getInfoUrl(param1:String) : String
         {
-            return imgAvatarURL + param1 + "/info.json";
+            return imgAvatarURL + param1 + "/info.json" + "?v=" + Config.gameVersion;
         }// end function
 
         public static function getUrl(param1:String) : String
         {
-            return imgAvatarURL + param1;
+            return imgAvatarURL + param1 + "?v=" + Config.gameVersion;
         }// end function
 
         public static function getInfoEffUrl(param1:String) : String
         {
-            return imgAvatarURL + "fx/" + param1 + "/info.json";
+            return imgAvatarURL + "fx/" + param1 + "/info.json" + "?v=" + Config.gameVersion;
         }// end function
 
     }

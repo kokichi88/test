@@ -119,7 +119,7 @@
             this.gameInput = GameInput.getInstance();
             MapMgr.getInstance().init();
             ModuleMgr.getInstance().init();
-            FrameTimerManager.getInstance(GlobalVar.GAME_TIMER).add(1, 0, this.loop);
+            GlobalVar.stage.addEventListener(Event.ENTER_FRAME, loop);
             MouseMgr.getInstance(LayerMgr.getInstance().getLayer(GlobalVar.LAYER_INFO));
             MouseMgr.hasInit = true;
             ActiveTooltip.getInstance(LayerMgr.getInstance().getLayer(GlobalVar.LAYER_LOADING));
@@ -132,7 +132,7 @@
             return;
         }// end function
 
-        private function loop() : void
+        private function loop(e:Event) : void
         {
             if (MouseMgr.hasInit)
             {

@@ -66,7 +66,7 @@
         public var guiShop:GuiShop;
         public var guiBuildingAction:GuiBuildingAction;
         public var guiUpgradeBuilding:GuiUpgradeBuilding;
-        public var guiTrainTroop:GuiTrainTroop;
+        public var guiTrainTroop2:GuiTrainTroop2;
         public var guiLaboratory:GuiLaboratory;
         public var guiTroopUpgrade:GuiTroopUpgrade;
         public var guiPopup:GuiPopup;
@@ -104,6 +104,7 @@
         public var guiFirstAddG:GuiFirstAddG;
         public var guiPromoteLevel:GuiPromoteG_1;
         public var guiPromotePayG:GuiPromoteG_2;
+        public var guiSpellInfo:GuiSpellInfo;
         private var timeToMaintain:Number = -1;
         private var notifyMaintain:TooltipText;
         public var lastACKLoop:int;
@@ -285,7 +286,7 @@
             this.guiBuildingAction = new GuiBuildingAction();
             this.guiUpgradeBuilding = new GuiUpgradeBuilding();
             this.guiBuildingInfo = new GuiBuildingInfo();
-            this.guiTrainTroop = new GuiTrainTroop();
+            this.guiTrainTroop2 = new GuiTrainTroop2();
             this.guiLaboratory = new GuiLaboratory();
             this.guiTroopUpgrade = new GuiTroopUpgrade();
             this.guiPopup = new GuiPopup();
@@ -314,6 +315,7 @@
             this.guiFirstAddG = new GuiFirstAddG();
             this.guiPromoteLevel = new GuiPromoteG_1();
             this.guiPromotePayG = new GuiPromoteG_2();
+            this.guiSpellInfo = new GuiSpellInfo();
             return;
         }// end function
 
@@ -552,7 +554,7 @@
             var _loc_2:int = 0;
             this.guiMainTopLeft.updateData();
             this.guiMainTopRight.updateData();
-            this.guiTrainTroop.loop();
+            this.guiTrainTroop2.loop();
             GameDataMgr.getInstance().loop();
             this.guiTotalTroop.loop();
             this.guiNotify.loop();
@@ -922,7 +924,7 @@
             this.guiBuildingAction.hide();
             this.guiUpgradeBuilding.hide();
             this.guiBuildingInfo.hide();
-            this.guiTrainTroop.hide();
+            this.guiTrainTroop2.hide();
             this.guiLaboratory.hide();
             this.guiTroopUpgrade.hide();
             this.guiFriendsList.hide();
@@ -1130,12 +1132,16 @@
                 }
             }
             this.addListBuildingToMap(_loc_3);
-            if (GlobalVar.state == GlobalVar.STATE_MYHOME && _loc_2.clanCastle.details.clanId > 0)
+            if (GlobalVar.state == GlobalVar.STATE_MYHOME)
             {
-                GameDataMgr.getInstance().myClanDetial.clanId = _loc_2.clanCastle.details.clanId;
-                GameDataMgr.getInstance().getRequestClanList = false;
-                this.sendGetClanDetail(_loc_2.clanCastle.details.clanId);
-                this.guiContentChat.show();
+                this.guiTrainTroop2.loadBarracks();
+                if (_loc_2.clanCastle.details.clanId > 0)
+                {
+                    GameDataMgr.getInstance().myClanDetial.clanId = _loc_2.clanCastle.details.clanId;
+                    GameDataMgr.getInstance().getRequestClanList = false;
+                    this.sendGetClanDetail(_loc_2.clanCastle.details.clanId);
+                    this.guiContentChat.show();
+                }
             }
             else
             {
@@ -1850,8 +1856,8 @@
 
         public function sendBuyResource(param1:String, param2:int, param3:int) : void
         {
-            var _loc_4:* = new BuyResourceCmd();
-            new BuyResourceCmd().number = param2;
+            var _loc_4:BuyResourceCmd = new BuyResourceCmd();
+			_loc_4.number = param2;
             _loc_4.type = param1;
             _loc_4.cost = param3;
             bzConnector.send(_loc_4);
@@ -2024,7 +2030,7 @@
                 this.guiNotify.addNewNotify(Localization.getInstance().getString("NoBarrackAvaiable"));
                 return;
             }
-            this.guiTrainTroop.showGui(param1);
+            this.guiTrainTroop2.showGui(param1);
             this.guiMainBottom.hide();
             this.guiShop.hide();
             return;
@@ -2241,6 +2247,10 @@
                     case BuildingType.TRA_5:
                     {
                         this.setTrap(_loc_3);
+                        break;
+                    }
+                    case BuildingType.SPELL_FACTORY:
+                    {
                         break;
                     }
                     default:
@@ -2564,33 +2574,6 @@
 
         public function onGetClanDetailMsg(param1:MsgInfo) : void
         {
-            var _loc_2:* = new GetClanDetailMsg(param1.Data);
-            logger.debug("msg", ErrorCode.getReason(_loc_2.errorCode));
-            if (_loc_2.errorCode == 0)
-            {
-                if (_loc_2.clanObj.clanId == GameDataMgr.getInstance().myClanDetial.clanId)
-                {
-                    GameDataMgr.getInstance().saveMyClan(_loc_2);
-                    if (!GameDataMgr.getInstance().getRequestClanList)
-                    {
-                        this.guiContentChat.removeAllItem();
-                        this.sendGetTroopRequestList();
-                        this.sendGetChatClan();
-                    }
-                }
-                if (this.guiClan.isShowing)
-                {
-                    this.guiClan.guiJoinClan.loadClanDetail(_loc_2);
-                }
-                else if (this.guiRanking.isShowing)
-                {
-                    this.guiRanking.guiJoinClan.loadClanDetail(_loc_2);
-                }
-            }
-            else
-            {
-                this.showErrorCode(_loc_2.errorCode);
-            }
             return;
         }// end function
 
@@ -3043,7 +3026,7 @@
         public function sendCancelBuilding(param1:int, param2:String, param3:int) : void
         {
             var _loc_4:* = new CancelPlacingCmd();
-            new CancelPlacingCmd().typeId = param3;
+            _loc_4.typeId = param3;
             _loc_4.autoId = param1;
             _loc_4.type = param2;
             bzConnector.send(_loc_4);
@@ -3080,12 +3063,12 @@
 
         public function quickTrainTroop() : void
         {
-            this.guiTrainTroop.finishAllTraining(GameDataMgr.getInstance().curBarrackId);
+            this.guiTrainTroop2.finishAllTraining(GameDataMgr.getInstance().curBarrackId);
             this.guiNotify.addNewNotify(Localization.getInstance().getString("FinishQuickTraining"));
             this.guiMainTop.updateTotalTroop();
             if (TutorialMgr.getInstance().isTutorial)
             {
-                this.guiTrainTroop.hide(true);
+                this.guiTrainTroop2.hide(true);
                 this.guiTotalTroop.hide(true);
                 this.guiMainBottom.show();
                 TutorialMgr.getInstance().nextStep(1);
@@ -3115,7 +3098,7 @@
         public function sendTrainTroopCmd(param1:int, param2:String, param3:int) : void
         {
             var _loc_4:* = new TrainTroopCmd();
-            new TrainTroopCmd().barrackAutoId = param1;
+            _loc_4.barrackAutoId = param1;
             _loc_4.troopType = param2;
             _loc_4.troopNumber = param3;
             bzConnector.send(_loc_4);
@@ -3128,11 +3111,11 @@
             logger.debug("msg", ErrorCode.getReason(_loc_2.errorCode));
             if (_loc_2.errorCode != 0)
             {
-                this.guiTrainTroop.updateStartTime(_loc_2.startTime);
+                this.guiTrainTroop2.updateStartTime(_loc_2.startTime, _loc_2.barrackAutoId);
             }
             else
             {
-                this.guiTrainTroop.onGetTrainTroopMsg(_loc_2.startTime);
+                this.guiTrainTroop2.onGetTrainTroopMsg(_loc_2.startTime, _loc_2.barrackAutoId);
             }
             return;
         }// end function
@@ -3140,7 +3123,7 @@
         public function sendCancelTroopTrainCmd(param1:int, param2:String, param3:int) : void
         {
             var _loc_4:* = new CancelTrainTroopCmd();
-            new CancelTrainTroopCmd().barrackAutoId = param1;
+           _loc_4.barrackAutoId = param1;
             _loc_4.troopType = param2;
             _loc_4.troopNumber = param3;
             bzConnector.send(_loc_4);
@@ -3156,7 +3139,7 @@
             }
             else
             {
-                this.guiTrainTroop.onGetCancelTrainTroopMsg(_loc_2);
+                this.guiTrainTroop2.onGetCancelTrainTroopMsg(_loc_2);
             }
             return;
         }// end function
@@ -3196,7 +3179,7 @@
 
         public function showErrorCode(param1:int) : void
         {
-            this.showMessage("Thông báo lỗi", "Lỗi kết nối\nError: " + param1, "Kết nối lại", this.reloadGame, null, false);
+            this.showMessage("Thông báo lỗi", "Lỗi kết nối\nError: " + param1, "Kết nối lại", null, null, false);
             return;
         }// end function
 
@@ -3277,7 +3260,7 @@
             var _loc_5:* = GameDataMgr.getInstance().armyCampList.length;
             var _loc_6:* = this.troopList.length;
             var _loc_7:* = new CityTroop();
-            new CityTroop().setInfo(param1.type, param1.level, _loc_4[_loc_6 % _loc_5].posX, _loc_4[_loc_6 % _loc_5].posY);
+            _loc_7.setInfo(param1.type, param1.level, _loc_4[_loc_6 % _loc_5].posX, _loc_4[_loc_6 % _loc_5].posY);
             _loc_7.idAmryCamp = _loc_4[_loc_6 % _loc_5].autoId;
             if (this.troopList.length > 0)
             {
@@ -3415,7 +3398,7 @@
             logger.debug("msg", ErrorCode.getReason(_loc_2.errorCode));
             if (_loc_2.errorCode != 0)
             {
-                this.showErrorCode(_loc_2.errorCode);
+                //this.showErrorCode(_loc_2.errorCode);
             }
             else
             {
@@ -3577,7 +3560,7 @@
                 return;
             }
             var _loc_4:* = new Builder();
-            new Builder().setInfo(param1, param2);
+           _loc_4.setInfo(param1, param2);
             if (param3 > 0)
             {
                 _loc_5 = 0;
@@ -3963,7 +3946,7 @@
             var _loc_5:* = Localization.getInstance().getString("ChargeCard1");
             this.guiPopup.showLoading(_loc_4, _loc_5);
             var _loc_6:* = new ChargeCardCmd();
-            new ChargeCardCmd().type = param1;
+           _loc_6.type = param1;
             _loc_6.code = param2;
             _loc_6.serial = param3;
             bzConnector.send(_loc_6);
@@ -4414,7 +4397,7 @@
         {
             var _loc_2:* = new FinishTrainTroopMsg(param1.Data);
             logger.debug("msg", ErrorCode.getReason(_loc_2.errorCode));
-            this.guiTrainTroop.onGetFinishTrainTroop(_loc_2);
+            this.guiTrainTroop2.onGetFinishTrainTroop(_loc_2);
             return;
         }// end function
 
@@ -4494,14 +4477,14 @@
         private function makeHTTPRequestToPayment(param1:Number, param2:int, param3:String) : void
         {
             var _loc_4:* = new URLRequest(GlobalVar.SUBMIT_TRANS_URL);
-            new URLRequest(GlobalVar.SUBMIT_TRANS_URL).method = URLRequestMethod.POST;
+            _loc_4.method = URLRequestMethod.POST;
             var _loc_5:* = new URLVariables();
-            new URLVariables().transId = param1;
+            _loc_5.transId = param1;
             _loc_5.appId = param2;
             _loc_5.appData = param3;
             _loc_4.data = _loc_5;
             var _loc_6:* = new URLLoader();
-            new URLLoader().load(_loc_4);
+            _loc_6.load(_loc_4);
             return;
         }// end function
 

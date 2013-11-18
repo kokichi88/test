@@ -34,7 +34,7 @@
             var _loc_2:* = event.target as URLLoader;
             var _loc_3:* = new XML(_loc_2.data);
             var _loc_4:* = new ConfigData();
-            new ConfigData().bboxHost = _loc_3.ip;
+            _loc_4.bboxHost = _loc_3.ip;
             _loc_4.host = _loc_3.ip;
             _loc_4.port = int(_loc_3.port);
             _loc_4.zone = _loc_3.zone;

@@ -91,7 +91,7 @@
         public static const URL_THOI_LOAN:String = "http://me.zing.vn/apps/thoiloan";
         public static const URL_FANPAGE_ZINGME:String = "http://me.zing.vn/b/thoiloan.gsn";
         public static const URL_FANPAGE_FACEBOOK:String = "https://www.facebook.com/gamethoiloan";
-        public static const URL_SUPPORT:String = "https://docs.google.com/forms/d/1CIg0gyn0_ScTD-8fXXyF4v73fOU4wp-zYz1hZB1Q4hk/viewform?edit_requested=true";
+        public static const URL_SUPPORT:String = "http://thoiloan.vn/ho-tro/gui-yeu-cau.html";
         public static const SUBMIT_TRANS_URL:String = "https://sandbox.direct.pay.zing.vn/chonkenhthanhtoan";
         public static const TRANSID_HEADER:String = "transId";
         public static const APPID_HEADER:String = "appId";

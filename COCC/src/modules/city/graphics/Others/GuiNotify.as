@@ -36,7 +36,7 @@
             TweenLite.to(_loc_3, 0.3, {y:startY});
             TweenLite.to(_loc_3, 1.8, {delay:1.5, alpha:0});
             var _loc_4:* = new Object();
-            new Object().notify = _loc_3;
+            _loc_4.notify = _loc_3;
             _loc_4.numLoop = maxLoop;
             this.listItem.push(_loc_4);
             return;
@@ -71,7 +71,7 @@
             TweenLite.to(_loc_2, 0.3, {y:startY});
             TweenLite.to(_loc_2, 1.8, {delay:1.5, alpha:0});
             var _loc_5:* = new Object();
-            new Object().notify = _loc_2;
+            _loc_5.notify = _loc_2;
             _loc_5.numLoop = maxLoop;
             this.listItem.push(_loc_5);
             return;

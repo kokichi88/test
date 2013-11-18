@@ -135,7 +135,10 @@
                 _loc_3 = avatar.y - avatarHeight - this.statusIcon.heightBg / 2;
                 this.statusIcon.setPos(_loc_2, _loc_3);
                 this.statusIcon.setStatus(param1);
-                this.statusIcon.show(LayerMgr.getInstance().getLayer(GlobalVar.LAYER_INFO));
+                if (!this.statusIcon.isShowing)
+                {
+                    this.statusIcon.show(LayerMgr.getInstance().getLayer(GlobalVar.LAYER_INFO));
+                }
             }
             return;
         }// end function

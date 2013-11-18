@@ -6,11 +6,11 @@
 
     public class JsonMgr extends Object
     {
+        private var spellFactory:Object;
         public var armyCamp:Object;
         public var barrack:Object;
         public var laboratory:Object;
         public var resource:Object;
-        public var spellFactory:Object;
         public var storage:Object;
         public var townHall:Object;
         public var troop:Object;
@@ -33,6 +33,8 @@
         public var levelUser:Object;
         public var trap:Object;
         public var shields:Object;
+        public var spellBase:Object;
+        public var spellLevel:Object;
         private static var _inst:JsonMgr;
 
         public function JsonMgr()
@@ -243,6 +245,16 @@
             var _loc_3:* = new TroopInfo();
             Utility.setData(_loc_3, this.troopBase[param1]);
             Utility.setData(_loc_3, this.troop[param1][param2.toString()]);
+            _loc_3.level = param2;
+            _loc_3.id = param1;
+            return _loc_3;
+        }// end function
+
+        public function getDataSpell(param1:String, param2:int) : DataSpell
+        {
+            var _loc_3:* = new DataSpell();
+            Utility.setData(_loc_3, this.spellBase[param1]);
+            Utility.setData(_loc_3, this.spellLevel[param1][param2.toString()]);
             _loc_3.level = param2;
             _loc_3.id = param1;
             return _loc_3;
@@ -475,6 +487,45 @@
                 }
             }
             return -1;
+        }// end function
+
+        public function setSpellBase(param1:Object) : void
+        {
+            this.spellBase = param1;
+            return;
+        }// end function
+
+        public function setSpellFactory(param1:Object) : void
+        {
+            this.spellFactory = param1;
+            return;
+        }// end function
+
+        public function setSpellLevel(param1:Object) : void
+        {
+            this.spellLevel = param1;
+            return;
+        }// end function
+
+        public function getSpelFactoryData(param1:int) : DataSpellFactory
+        {
+            var _loc_2:* = this.spellFactory[BuildingType.SPELL_FACTORY][param1.toString()];
+            var _loc_3:* = new DataSpellFactory();
+            Utility.setData(_loc_3, _loc_2);
+            _loc_3.id = BuildingType.SPELL_FACTORY;
+            return _loc_3;
+        }// end function
+
+        public function getMaxConfigSpellFactory() : DataSpellFactory
+        {
+            var _loc_1:* = this.getConfigMaxLevel(BuildingType.SPELL_FACTORY);
+            return this.getSpelFactoryData(_loc_1);
+        }// end function
+
+        public function getMaxConfigInfoSpell(param1:String) : DataSpell
+        {
+            var _loc_2:* = this.getConfigMaxLevel(param1);
+            return this.getDataSpell(param1, _loc_2);
         }// end function
 
         public static function getInstance() : JsonMgr

@@ -13,7 +13,7 @@
         public static var gameVersion:int = 1;
         public static var configVersion:int = 1;
         public static var hasFeed:Boolean = false;
-        public static var uId:int = 1;
+        public static var uId:int = 2165568;
         public static var signed_request:String = "";
         public static var authorizationCode:String = "";
         private static var localResUrl:String = "../res/";

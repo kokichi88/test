@@ -51,7 +51,7 @@
             this.uId = param1;
             this.created = param3;
             var _loc_5:* = new TooltipText(false, true);
-            new TooltipText(false, true).x = padingLeft;
+            _loc_5.x = padingLeft;
             _loc_5.width = 280;
             var _loc_6:String = "#FDC877";
             if (param4 != "")
@@ -132,7 +132,7 @@
             var _loc_3:* = this.getExp(param1);
             _loc_2 = _loc_2.replace("@number", _loc_3.toString());
             var _loc_4:* = new TooltipText(true, true);
-            new TooltipText(true, true).autoSize = TextFieldAutoSize.CENTER;
+            _loc_4.autoSize = TextFieldAutoSize.CENTER;
             _loc_4.htmlText = "<p align=\'center\'><textformat leading=\'-4\'><font color =\'#23E2DE\' size=\'" + fontSize + "\'> " + _loc_2 + "</font></textformat></p></br>";
             _loc_4.x = this.bg.x + (this.bg.width - _loc_4.width) / 2;
             _loc_4.y = this.bg.y + this.bg.height - 5;

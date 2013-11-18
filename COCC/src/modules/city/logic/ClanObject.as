@@ -72,22 +72,6 @@
         {
             var _loc_2:int = 0;
             var _loc_3:int = 0;
-            if (param1 == GuiStatusBuilding.NONE)
-            {
-                this.statusIcon.hide();
-            }
-            else
-            {
-                if (status != PRODUCING)
-                {
-                    return;
-                }
-                _loc_2 = avatar.x - this.statusIcon.widthBg / 2;
-                _loc_3 = avatar.y - avatarHeight - this.statusIcon.heightBg / 2;
-                this.statusIcon.setPos(_loc_2, _loc_3);
-                this.statusIcon.setStatus(param1);
-                this.statusIcon.show(LayerMgr.getInstance().getLayer(GlobalVar.LAYER_INFO));
-            }
             return;
         }// end function
 
@@ -232,65 +216,7 @@
             var _loc_3:int = 0;
             var _loc_4:Vector.<GuiBuildingActioItem> = null;
             var _loc_5:int = 0;
-            if (GlobalVar.state != GlobalVar.STATE_MYHOME)
-            {
-                return;
-            }
-            super.loop();
-            if (GameDataMgr.getInstance().myClanDetial.clanId > 0)
-            {
-                _loc_1 = Utility.getCurTime() - this.lastRequestTime;
-                if (_loc_1 < GlobalVar.CLAN_TIMEOUT_REQUEST)
-                {
-                    if (status == PRODUCING)
-                    {
-                        statusBar.showTroopStatus("ClanSymbol_" + this.details.icon, GlobalVar.CLAN_TIMEOUT_REQUEST - _loc_1, GlobalVar.CLAN_TIMEOUT_REQUEST);
-                        viewStatusBar();
-                        this.statusIcon.hide();
-                    }
-                    if (CityMgr.getInstance().guiBuildingAction.isShowing && GameDataMgr.getInstance().myClanDetial.clanId > 0 && CityMgr.getInstance().guiBuildingAction.curObject && CityMgr.getInstance().guiBuildingAction.curObject.type == BuildingType.CLAN_CASTLE)
-                    {
-                        _loc_2 = CityMgr.getInstance().guiBuildingAction.listItem;
-                        _loc_3 = 0;
-                        while (_loc_3 < _loc_2.length)
-                        {
-                            
-                            if (_loc_2[_loc_3].typeAction == BuildingActionType.REQUEST_TROOP)
-                            {
-                                _loc_2[_loc_3].bmpActionItem.enable = false;
-                                break;
-                            }
-                            _loc_3++;
-                        }
-                    }
-                }
-                else
-                {
-                    if (status == PRODUCING)
-                    {
-                        hideStatusBar();
-                        if (!this.isFull)
-                        {
-                            this.showStatusIcon(GuiStatusBuilding.CAN_REQUEST);
-                        }
-                    }
-                    if (CityMgr.getInstance().guiBuildingAction.isShowing && GameDataMgr.getInstance().myClanDetial.clanId > 0 && CityMgr.getInstance().guiBuildingAction.curObject && CityMgr.getInstance().guiBuildingAction.curObject.type == BuildingType.CLAN_CASTLE)
-                    {
-                        _loc_4 = CityMgr.getInstance().guiBuildingAction.listItem;
-                        _loc_5 = 0;
-                        while (_loc_5 < _loc_4.length)
-                        {
-                            
-                            if (_loc_4[_loc_5].typeAction == BuildingActionType.REQUEST_TROOP)
-                            {
-                                _loc_4[_loc_5].bmpActionItem.enable = !this.isFull;
-                                break;
-                            }
-                            _loc_5++;
-                        }
-                    }
-                }
-            }
+            return;
             return;
         }// end function
 

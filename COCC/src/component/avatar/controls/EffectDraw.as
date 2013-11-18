@@ -17,7 +17,7 @@
         public static function play(param1:String, param2:Point, param3:DisplayObjectContainer, param4:int = -1, param5:int = -1) : AniEffect
         {
             var _loc_6:* = new AniEffect(param1);
-            new AniEffect(param1).play(param3, param2, param4, param5);
+           _loc_6.play(param3, param2, param4, param5);
             _loc_6.mouseChildren = false;
             _loc_6.mouseEnabled = false;
             return _loc_6;

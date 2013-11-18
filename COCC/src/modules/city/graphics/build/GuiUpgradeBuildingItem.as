@@ -14,6 +14,7 @@
         private var type:String;
         public var spMaskCurIndex:Sprite;
         public var spMaskNextIndex:Sprite;
+        private var saveIndex:int;
         public static var ICON_HITPOINTS:String = "Hitpoints_Icon";
         public static var ICON_DAMAGE:String = "Damage_Icon";
         public static var ICON_GOLD_PRODUCTION_RATE:String = "Gold_ProductionRate_Icon";
@@ -141,8 +142,13 @@
 
         public function updateIndex(param1:int, param2:int) : void
         {
-            this.labelUpgradeInfo.text = Localization.getInstance().getString(this.type) + ": " + param1 + "/" + param2;
             this.imageCurIndex.scaleX = Math.min(1, param1 / param2);
+            if (param1 == this.saveIndex)
+            {
+                return;
+            }
+            this.labelUpgradeInfo.text = Localization.getInstance().getString(this.type) + ": " + param1 + "/" + param2;
+            this.saveIndex = param1;
             return;
         }// end function
 

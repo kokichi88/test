@@ -3,8 +3,6 @@
     import component.*;
     import flash.display.*;
     import flash.text.*;
-    import modules.*;
-    import modules.city.*;
     import resMgr.*;
     import utility.*;
 
@@ -14,6 +12,7 @@
         public var imageStatusBar:MovieClip;
         public var troopIcon:Sprite = null;
         private var curTroopType:String = null;
+        private var lastRemainTime:int = -1;
 
         public function BuildingStatusBarGui()
         {
@@ -31,16 +30,24 @@
                 this.troopIcon = null;
             }
             this.imageStatusBar.scaleX = param1 / param2;
-            this.labelTime.text = Utility.convertTimeToShortString(param2 - param1);
+            var _loc_3:* = Math.floor(param2 - param1);
+            if (this.lastRemainTime != _loc_3)
+            {
+                this.labelTime.text = Utility.convertTimeToShortString(_loc_3);
+                this.lastRemainTime = _loc_3;
+            }
             return;
         }// end function
 
         public function showTroopStatus(param1:String, param2:Number, param3:Number) : void
         {
             var _loc_5:int = 0;
-            this.imageStatusBar.scaleX = Math.min(1, (param3 - param2) / param3);
-            this.labelTime.text = Utility.convertTimeToShortString(param2);
-            ModuleMgr.getInstance().doFunction(CityMgr.TROOP_UPGRADING_GUI_UPDATE_TIME, this.labelTime.text);
+            this.imageStatusBar.scaleX = Math.max(0, Math.min(1, (param3 - param2) / param3));
+            if (this.lastRemainTime != param2)
+            {
+                this.labelTime.text = Utility.convertTimeToShortString(param2);
+                this.lastRemainTime = param2;
+            }
             if (this.curTroopType == param1)
             {
                 return;

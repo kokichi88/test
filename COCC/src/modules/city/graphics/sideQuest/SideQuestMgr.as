@@ -204,7 +204,7 @@
                 _loc_5.y = _loc_5.y + (CityMgr.getInstance().guiMainTopRight.imageG.y - _loc_4.height / 2);
             }
             var _loc_6:* = new IconEffectSeed();
-            new IconEffectSeed().create("image_" + param1, _loc_2, _loc_5);
+            _loc_6.create("image_" + param1, _loc_2, _loc_5);
             return;
         }// end function
 

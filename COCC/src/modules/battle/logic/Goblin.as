@@ -33,13 +33,12 @@
 
         override public function findTarget() : void
         {
-            var _loc_1:Vector.<int> = null;
             var _loc_2:Vector.<int> = null;
             var _loc_3:int = 0;
             var _loc_4:int = 0;
             var _loc_5:Vector2D = null;
             var _loc_6:DataObject = null;
-            _loc_1 = new Vector.<int>;
+            var _loc_1:* = new Vector.<int>;
             curTarget = null;
             finalTarget = null;
             curTarget = MapMgr.getInstance().findNearestTarget(this, OBJTYPE_RESOURCES);

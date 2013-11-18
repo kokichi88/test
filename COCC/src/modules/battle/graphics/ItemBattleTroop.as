@@ -53,6 +53,7 @@
             var _loc_5:Sprite = null;
             var _loc_6:String = null;
             var _loc_7:Number = NaN;
+            var _loc_9:String = null;
             this._troop = param1;
             if (param1.type == "Clan")
             {
@@ -117,7 +118,24 @@
             }
             if (this.bmpTroop)
             {
-                this.bmpTroop.setTooltipDisplayObj(Utility.getTooltipTroop(this._troop));
+                _loc_9 = Utility.getTypeObject(this.troop.type);
+                switch(_loc_9)
+                {
+                    case BuildingType.TROOP:
+                    {
+                        this.bmpTroop.setTooltipDisplayObj(Utility.getTooltipTroop(this._troop));
+                        break;
+                    }
+                    case BuildingType.SPELL:
+                    {
+                        this.bmpTroop.setTooltipDisplayObj(Utility.getTooltipSpell(this._troop));
+                        break;
+                    }
+                    default:
+                    {
+                        break;
+                    }
+                }
             }
             return;
         }// end function

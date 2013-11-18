@@ -27,6 +27,7 @@
         public static const REASON_LABORATORY_LEVEL_REQUIRED:String = "LaboratoryReason1";
         public static const REASON_MAX_LEVEL:String = "LaboratoryReason2";
         public static const REASON_COMING_SOON:String = "LaboratoryReason3";
+        public static const REASON_SPELL_FACTORY_LEVEL_REQUIRED:String = "LaboratoryReason4";
         private static const BMP_ITEM:String = "bmpLaboratoryItem";
 
         public function GuiLaboratotyItem()
@@ -137,13 +138,81 @@
             {
                 case BMP_ITEM:
                 {
-                    ModuleMgr.getInstance().doFunction(CityMgr.HIDE_LABORATORY_GUI);
-                    ModuleMgr.getInstance().doFunction(CityMgr.SHOW_TROOP_UPGRADE_GUI, this.itemType, this.curLevel);
+                    if (this.itemType.indexOf("ARM") != -1)
+                    {
+                        ModuleMgr.getInstance().doFunction(CityMgr.HIDE_LABORATORY_GUI);
+                        ModuleMgr.getInstance().doFunction(CityMgr.SHOW_TROOP_UPGRADE_GUI, this.itemType, this.curLevel);
+                    }
+                    if (this.itemType.indexOf("SPE") != -1)
+                    {
+                        ModuleMgr.getInstance().doFunction(CityMgr.HIDE_LABORATORY_GUI);
+                        CityMgr.getInstance().guiSpellInfo.loadUpgradeInfo(this.itemType, this.curLevel);
+                    }
                     break;
                 }
                 default:
                 {
                     break;
+                }
+            }
+            return;
+        }// end function
+
+        public function loadSpellItem(param1:String) : void
+        {
+            var _loc_3:Number = NaN;
+            var _loc_4:Number = NaN;
+            var _loc_5:Number = NaN;
+            var _loc_6:int = 0;
+            var _loc_7:Sprite = null;
+            var _loc_8:DataSpell = null;
+            var _loc_9:int = 0;
+            var _loc_10:String = null;
+            this.itemType = param1;
+            if (this.iconTroop)
+            {
+                this.iconTroop.parent.removeChild(this.iconTroop);
+                this.iconTroop = null;
+            }
+            this.iconTroop = ResMgr.getInstance().getMovieClip(param1 + "_Training_Icon") as Sprite;
+            if (this.iconTroop)
+            {
+                this.iconTroop.x = (this.widthBg - this.iconTroop.width) / 2;
+                this.iconTroop.y = (this.heightBg - this.iconTroop.height) / 2 + 5;
+                this.bmpLaboratoryItem.img.addChild(this.iconTroop);
+                this.iconTroop.mouseChildren = false;
+                this.iconTroop.mouseEnabled = false;
+            }
+            this.curLevel = GameDataMgr.getInstance().getTroopLevel(this.itemType);
+            if (this.curLevel >= 1)
+            {
+                this.bgStar = new Sprite();
+                img.addChild(this.bgStar);
+                _loc_3 = 12.35;
+                _loc_4 = 7;
+                _loc_5 = 3.55;
+                _loc_6 = 0;
+                while (_loc_6 < this.curLevel)
+                {
+                    
+                    _loc_7 = ResMgr.getInstance().getMovieClip("icLevel") as Sprite;
+                    _loc_7.x = _loc_3 + _loc_6 * (_loc_7.width + _loc_5);
+                    _loc_7.y = _loc_4;
+                    _loc_7.mouseEnabled = false;
+                    _loc_7.mouseChildren = false;
+                    this.bgStar.addChild(_loc_7);
+                    _loc_6++;
+                }
+            }
+            var _loc_2:* = JsonMgr.getInstance().getConfigMaxLevel(param1);
+            if (this.curLevel < _loc_2)
+            {
+                _loc_8 = JsonMgr.getInstance().getDataSpell(param1, (this.curLevel + 1));
+                if (_loc_8)
+                {
+                    _loc_9 = GameDataMgr.getInstance().getMoney(MoneyType.ELIXIR);
+                    _loc_10 = _loc_9 >= _loc_8.elixirUpgradeCost ? ("#FFFFFF") : ("#FF4040");
+                    this.labelCost.htmlText = "<font color=\'" + _loc_10 + "\'> " + Utility.standardNumber(_loc_8.elixirUpgradeCost) + " </font>";
                 }
             }
             return;

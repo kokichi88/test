@@ -226,8 +226,9 @@
 
         private function focusCenterGame() : void
         {
+            var _loc_1:Layer = null;
             hideDisableScreen();
-            var _loc_1:* = LayerMgr.getInstance().getLayer(GlobalVar.LAYER_MOVE);
+            _loc_1 = LayerMgr.getInstance().getLayer(GlobalVar.LAYER_MOVE);
             MapMgr.curScale = GlobalVar.INIT_SCALE;
             MapMgr.getInstance().scaleLevel = MapMgr.curScale;
             var _loc_4:* = MapMgr.curScale;

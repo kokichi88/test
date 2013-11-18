@@ -114,6 +114,7 @@
 
         override public function findTarget() : void
         {
+            var _loc_1:Vector.<int> = null;
             var _loc_3:Vector.<int> = null;
             var _loc_4:int = 0;
             var _loc_5:int = 0;
@@ -122,7 +123,7 @@
             var _loc_8:Point = null;
             var _loc_9:Number = NaN;
             var _loc_10:DataObject = null;
-            var _loc_1:* = new Vector.<int>;
+            _loc_1 = new Vector.<int>;
             var _loc_2:* = int.MAX_VALUE;
             curTarget = null;
             finalTarget = null;

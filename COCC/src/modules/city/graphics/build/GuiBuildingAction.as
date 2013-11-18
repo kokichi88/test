@@ -281,6 +281,11 @@
                                 this.addItem(BuildingActionType.HARVEST_ELIXIR);
                                 break;
                             }
+                            case BuildingType.SPELL_FACTORY:
+                            {
+                                this.addItem(BuildingActionType.CREATE_SPELL);
+                                break;
+                            }
                             default:
                             {
                                 break;
@@ -418,6 +423,11 @@
                 case BuildingActionType.SELL:
                 {
                     CityMgr.getInstance().prepareToSell(_loc_2);
+                    break;
+                }
+                case BuildingActionType.CREATE_SPELL:
+                {
+                    CityMgr.getInstance().guiTrainTroop2.showGui(-1);
                     break;
                 }
                 default:

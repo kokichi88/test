@@ -25,6 +25,7 @@
         public var startTime:Number = 0;
         public var endTime:Number = 0;
         public var endLoop:int = 0;
+        public var clanIcon:int = 0;
 
         public function BattleInfoReplayMsg(param1:Object = null)
         {
@@ -52,6 +53,7 @@
             this.uId = readInt();
             this.uName = readStr();
             this.clanName = readStr();
+            this.clanIcon = readInt();
             this.gold = readInt();
             this.elixir = readInt();
             this.darkElixir = readInt();

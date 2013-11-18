@@ -42,7 +42,7 @@
         public function setInfo(param1:String, param2:int, param3:int, param4:int) : void
         {
             var _loc_5:* = JsonMgr.getInstance().getInfoTroop(param1, param2);
-            this.moveSpeed = _loc_5.moveSpeed / 8 * GlobalVar.stage.frameRate;
+            this.moveSpeed = _loc_5.moveSpeed / 8 * BaseInfo.WIDTH_CELL * BaseInfo.SCALE_MAP;
             this.troopId = param1;
             this.troopLevel = param2;
             this.updateCellAMC(param3, param4);

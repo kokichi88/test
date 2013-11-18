@@ -374,7 +374,7 @@
                     
                     _loc_10 = new TextField();
                     _loc_10.mouseEnabled = false;
-                    _loc_10.text = this.battleMap.areaMap.getNode(_loc_4, _loc_9).idNode.toString();
+                    _loc_10.text = this.battleMap.getIsoType(_loc_4, _loc_9).toString();
                     _loc_11 = this.battleMap.isoToPoint(_loc_4, _loc_9);
                     _loc_10.x = _loc_11.x;
                     _loc_10.y = _loc_11.y + this.battleMap.MaxHalfHeight / 2;
@@ -649,47 +649,46 @@
 
         public function findNearestTarget(param1:DataObject, param2:int = -1, param3:Boolean = false) : DataObject
         {
-            var _loc_9:DataObject = null;
-            var _loc_10:Point = null;
-            var _loc_11:Point = null;
+            var _loc_10:DataObject = null;
+            var _loc_11:Vector2D = null;
             var _loc_12:Number = NaN;
             var _loc_4:* = BattleModule.getInstance().battleData.objList;
             var _loc_5:* = Number.MAX_VALUE;
             var _loc_6:DataObject = null;
             var _loc_7:int = 0;
-            var _loc_8:int = 0;
-            while (_loc_8 < _loc_4.length)
+            var _loc_8:* = this.battleMap.cellToIso(param1.getCurCell());
+            var _loc_9:int = 0;
+            while (_loc_9 < _loc_4.length)
             {
                 
                 _loc_7 = 0;
-                _loc_9 = _loc_4[_loc_8];
-                if (!this.checkCanAttack(param1, _loc_9, param2))
+                _loc_10 = _loc_4[_loc_9];
+                if (!this.checkCanAttack(param1, _loc_10, param2))
                 {
                 }
                 else
                 {
                     if (!param3)
                     {
-                        if (_loc_9.team == param1.team)
+                        if (_loc_10.team == param1.team)
                         {
                         }
                     }
                     else
                     {
-                        if (_loc_9.team != param1.team)
+                        if (_loc_10.team != param1.team)
                         {
                         }
-                        if (_loc_9.baseInfo.curHp != _loc_9.baseInfo.maxHp)
+                        if (_loc_10.baseInfo.curHp != _loc_10.baseInfo.maxHp)
                         {
                             _loc_7 = 1000000;
                         }
                     }
-                    _loc_10 = this.battleMap.cellToPoint(_loc_9.getCurCell());
-                    _loc_11 = this.battleMap.cellToPoint(param1.getCurCell());
-                    _loc_12 = (_loc_11.x - _loc_10.x) * (_loc_11.x - _loc_10.x) + (_loc_11.y - _loc_10.y) * (_loc_11.y - _loc_10.y);
+                    _loc_11 = this.battleMap.cellToIso(_loc_10.getCurCell());
+                    _loc_12 = (_loc_8.x - _loc_11.x) * (_loc_8.x - _loc_11.x) + (_loc_8.y - _loc_11.y) * (_loc_8.y - _loc_11.y);
                     if (param2 >= 0)
                     {
-                        if (_loc_9.objectType == param2)
+                        if (_loc_10.objectType == param2)
                         {
                             _loc_12 = _loc_12 - BaseMap.BONUS_FAVORITE;
                         }
@@ -701,12 +700,32 @@
                     if (_loc_12 < _loc_5)
                     {
                         _loc_5 = _loc_12;
-                        _loc_6 = _loc_9;
+                        _loc_6 = _loc_10;
                     }
                 }
-                _loc_8++;
+                _loc_9++;
             }
             return _loc_6;
+        }// end function
+
+        private function drawPoint(param1:Number, param2:Number) : void
+        {
+            var _loc_3:* = LayerMgr.getInstance().getLayer(GlobalVar.LAYER_EFFECT);
+            _loc_3.graphics.beginFill(16711680);
+            _loc_3.graphics.drawCircle(param1, param2, 2);
+            _loc_3.graphics.endFill();
+            return;
+        }// end function
+
+        private function drawLine(param1:Point, param2:Point) : void
+        {
+            var _loc_3:* = LayerMgr.getInstance().getLayer(GlobalVar.LAYER_EFFECT);
+            _loc_3.graphics.beginFill(16711680);
+            _loc_3.graphics.lineStyle(1, 16711680, 1);
+            _loc_3.graphics.moveTo(param1.x, param1.y);
+            _loc_3.graphics.lineTo(param2.x, param2.y);
+            _loc_3.graphics.endFill();
+            return;
         }// end function
 
         private function checkCanAttack(param1:DataObject, param2:DataObject, param3:int) : Boolean
@@ -837,7 +856,7 @@
         public function addLabelToIso(param1:int, param2:int, param3:int) : void
         {
             var _loc_4:* = new TextField();
-            new TextField().mouseEnabled = false;
+            _loc_4.mouseEnabled = false;
             _loc_4.text = param3.toString();
             var _loc_5:* = this.rangeMap.isoToPoint(param1, param2);
             _loc_4.x = _loc_5.x;
@@ -1057,6 +1076,11 @@
                 case BuildingType.TRA:
                 {
                     _loc_2 = new TrapObject();
+                    break;
+                }
+                case BuildingType.SPF:
+                {
+                    _loc_2 = new SpellFactoryObject();
                     break;
                 }
                 default:

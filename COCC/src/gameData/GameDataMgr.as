@@ -21,6 +21,7 @@
         public var townHall:TownHallObject;
         public var clanCastle:ClanObject;
         public var laboratory:LaboratoryObject;
+        public var spellFactory:SpellFactoryObject;
         public var armyCampList:Vector.<ArmyCampObject>;
         public var barrackList:Vector.<BarrackObject>;
         public var defenseList:Vector.<DefenseObject>;
@@ -32,6 +33,7 @@
         public var trapList:Vector.<TrapObject>;
         public var graveStoneList:Vector.<Sprite>;
         public var troopList:Vector.<Troop>;
+        public var spellList:Vector.<Troop>;
         public var curObject:MapObject;
         public var myInfo:UserInfo;
         public var myClanDetial:ClanInfo;
@@ -64,6 +66,7 @@
             this.townHall = new TownHallObject();
             this.clanCastle = new ClanObject();
             this.laboratory = new LaboratoryObject();
+            this.spellFactory = new SpellFactoryObject();
             this.armyCampList = new Vector.<ArmyCampObject>;
             this.barrackList = new Vector.<BarrackObject>;
             this.defenseList = new Vector.<DefenseObject>;
@@ -75,6 +78,7 @@
             this.trapList = new Vector.<TrapObject>;
             this.graveStoneList = new Vector.<Sprite>;
             this.troopList = new Vector.<Troop>;
+            this.spellList = new Vector.<Troop>;
             this.curObject = new MapObject();
             this.myInfo = new UserInfo();
             this.myClanDetial = new ClanInfo();
@@ -114,6 +118,11 @@
                 case BuildingType.CAT:
                 {
                     this.clanCastle = param1 as ClanObject;
+                    break;
+                }
+                case BuildingType.SPF:
+                {
+                    this.spellFactory = param1 as SpellFactoryObject;
                     break;
                 }
                 case BuildingType.RES:
@@ -441,6 +450,7 @@
             this.wallList = new Vector.<WallObject>;
             this.removeLaboratory();
             this.removeClanCastle();
+            this.removeSpellFactory();
             _loc_1 = 0;
             while (_loc_1 < this.builderHutList.length)
             {
@@ -486,6 +496,16 @@
             MapMgr.getInstance().clearMap();
             BattleModule.getInstance().battleData.clearAllObj();
             CityMgr.getInstance().destroySpriteList();
+            return;
+        }// end function
+
+        private function removeSpellFactory() : void
+        {
+            if (this.spellFactory)
+            {
+                this.spellFactory.destroy();
+                this.spellFactory = null;
+            }
             return;
         }// end function
 
@@ -884,6 +904,10 @@
                 
                 this.obstacleList[_loc_1].loop();
                 _loc_1++;
+            }
+            if (this.spellFactory)
+            {
+                this.spellFactory.loop();
             }
             return;
         }// end function

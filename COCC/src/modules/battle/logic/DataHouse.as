@@ -98,13 +98,12 @@
             EffectDraw.vibrateLayer(_loc_2, 2);
             EffectDraw.vibrateLayer(_loc_1, 2);
             super.death();
-            if (this.objectType != DataObject.OBJTYPE_WALL)
+            if (this.objectType != DataObject.OBJTYPE_WALL && this.objectType != DataObject.OBJTYPE_TRAP)
             {
                 _loc_9 = MapMgr.getInstance().battleMap.cellToIso(move.responeCell);
                 _loc_10 = _loc_9.x / 3;
                 _loc_11 = _loc_9.y / 3;
                 MapMgr.getInstance().battleMap.setBuilding(_loc_9.x, _loc_9.y, this.mapObject.width * 3, this.mapObject.height * 3, BaseMap.CAN_MOVE, 1);
-                MapMgr.getInstance().rangeMap.setBuilding(_loc_10, _loc_11, this.mapObject.width, this.mapObject.height, -1, this.mapObject.type, -1, false);
                 MapMgr.getInstance().cityMap.setBuilding(_loc_10, _loc_11, this.mapObject.width, this.mapObject.height, BaseMap.CAN_MOVE);
             }
             return;
@@ -485,6 +484,20 @@
             }
             this.bgImage.mouseChildren = false;
             this.bgImage.mouseEnabled = false;
+            return;
+        }// end function
+
+        private function addCenter(param1:int, param2:int) : void
+        {
+            var _loc_3:* = LayerMgr.getInstance().getLayer(GlobalVar.LAYER_EFFECT);
+            var _loc_4:* = ResMgr.getInstance().getMovieClip("GREEN_" + param2);
+            var _loc_6:Number = 0.3;
+            ResMgr.getInstance().getMovieClip("GREEN_" + param2).scaleY = 0.3;
+            ResMgr.getInstance().getMovieClip("GREEN_" + param2).scaleX = _loc_6;
+            _loc_3.addChild(_loc_4);
+            var _loc_5:* = MapMgr.getInstance().battleMap.cellToPoint(param1);
+            _loc_4.x = _loc_5.x - _loc_4.width / 2;
+            _loc_4.y = _loc_5.y;
             return;
         }// end function
 

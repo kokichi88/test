@@ -30,7 +30,7 @@
         public function add(param1:int, param2:int, param3:Function, param4:Function = null) : void
         {
             var _loc_5:* = new Object();
-            new Object().delay = param1;
+            _loc_5.delay = param1;
             _loc_5.counter = param1;
             _loc_5.repeat = param2;
             _loc_5.callback = param3;

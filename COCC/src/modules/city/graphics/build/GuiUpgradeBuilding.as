@@ -71,10 +71,12 @@
             var _loc_18:ClanObject = null;
             var _loc_19:WallObject = null;
             var _loc_20:WallObject = null;
-            var _loc_21:BarrackObject = null;
-            var _loc_22:BarrackObject = null;
-            var _loc_23:TownHallObject = null;
-            var _loc_24:TownHallObject = null;
+            var _loc_21:SpellFactoryObject = null;
+            var _loc_22:SpellFactoryObject = null;
+            var _loc_23:BarrackObject = null;
+            var _loc_24:BarrackObject = null;
+            var _loc_25:TownHallObject = null;
+            var _loc_26:TownHallObject = null;
             this.curObject = param1;
             if (!param1)
             {
@@ -87,24 +89,24 @@
             {
                 case BuildingType.BAR:
                 {
-                    _loc_21 = param1 as BarrackObject;
-                    _loc_22 = new BarrackObject();
-                    _loc_22.level = param1.level + 1;
-                    _loc_22.loadConfigData();
-                    this.setCommonInfoUpgrade(_loc_22.level, _loc_21.type, _loc_22.info.buildTime, _loc_22.info.elixir, MoneyType.ELIXIR, _loc_22.info.townHallLevelRequired);
-                    this.setBarrackUpgradeIndexes(_loc_21, _loc_22);
-                    this.unlockWarrior(_loc_22.info.unlockedUnit);
+                    _loc_23 = param1 as BarrackObject;
+                    _loc_24 = new BarrackObject();
+                    _loc_24.level = param1.level + 1;
+                    _loc_24.loadConfigData();
+                    this.setCommonInfoUpgrade(_loc_24.level, _loc_23.type, _loc_24.info.buildTime, _loc_24.info.elixir, MoneyType.ELIXIR, _loc_24.info.townHallLevelRequired);
+                    this.setBarrackUpgradeIndexes(_loc_23, _loc_24);
+                    this.unlockWarrior(_loc_24.info.unlockedUnit);
                     break;
                 }
                 case BuildingType.TOW:
                 {
-                    _loc_23 = param1 as TownHallObject;
-                    _loc_24 = new TownHallObject();
-                    _loc_24.level = param1.level + 1;
-                    _loc_24.loadConfigData();
-                    this.setCommonInfoUpgrade(_loc_24.level, _loc_23.type, _loc_24.info.buildTime, _loc_24.info.gold, MoneyType.GOLD, 0);
-                    this.setTownHallUpgradeIndexes(_loc_23, _loc_24);
-                    this.unlockBuildings(_loc_23, _loc_24);
+                    _loc_25 = param1 as TownHallObject;
+                    _loc_26 = new TownHallObject();
+                    _loc_26.level = param1.level + 1;
+                    _loc_26.loadConfigData();
+                    this.setCommonInfoUpgrade(_loc_26.level, _loc_25.type, _loc_26.info.buildTime, _loc_26.info.gold, MoneyType.GOLD, 0);
+                    this.setTownHallUpgradeIndexes(_loc_25, _loc_26);
+                    this.unlockBuildings(_loc_25, _loc_26);
                     break;
                 }
                 case BuildingType.LAB:
@@ -185,6 +187,17 @@
                     _loc_20.loadConfigData();
                     this.setCommonInfoUpgrade(_loc_20.level, _loc_19.type, _loc_20.info.upgradeTime, _loc_20.info.gold, MoneyType.GOLD, _loc_20.info.townHallLevelRequired);
                     this.setWallUpgradeIndex(_loc_19, _loc_20);
+                    break;
+                }
+                case BuildingType.SPF:
+                {
+                    _loc_21 = param1 as SpellFactoryObject;
+                    _loc_22 = new SpellFactoryObject();
+                    _loc_22.level = param1.level + 1;
+                    _loc_22.type = param1.type;
+                    _loc_22.loadConfigData();
+                    this.setCommonInfoUpgrade(_loc_22.level, _loc_21.type, _loc_22.info.buildTime, _loc_22.info.elixir, MoneyType.ELIXIR, _loc_22.info.townHallLevelRequired);
+                    this.setSpellFactoryUpgradeIndex(_loc_21, _loc_22);
                     break;
                 }
                 default:
@@ -271,7 +284,7 @@
         private function addIndexItem(param1:String, param2:int, param3:int, param4:int, param5:int) : void
         {
             var _loc_6:* = new GuiUpgradeBuildingItem();
-            new GuiUpgradeBuildingItem().setPos(startIconX, startIconY + param5 * (_loc_6.heightBg + 5));
+            _loc_6.setPos(startIconX, startIconY + param5 * (_loc_6.heightBg + 5));
             _loc_6.loadUpgradeItem(param1, param4, param2, param3);
             this.bgImg.addChild(_loc_6.bgImg);
             this.listItem.push(_loc_6);
@@ -387,6 +400,14 @@
                     break;
                 }
             }
+            return;
+        }// end function
+
+        private function setSpellFactoryUpgradeIndex(param1:SpellFactoryObject, param2:SpellFactoryObject) : void
+        {
+            var _loc_3:* = JsonMgr.getInstance().getMaxConfigSpellFactory();
+            this.addIndexItem(GuiUpgradeBuildingItem.ICON_SPELL_CAPACITY, param1.info.capacity, param2.info.capacity, _loc_3.capacity, 0);
+            this.addIndexItem(GuiUpgradeBuildingItem.ICON_HITPOINTS, param1.info.hitpoints, param2.info.hitpoints, _loc_3.hitpoints, 1);
             return;
         }// end function
 

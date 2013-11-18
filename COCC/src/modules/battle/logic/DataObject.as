@@ -66,6 +66,7 @@
         public static const OBJTYPE_BULLET:int = 6;
         public static const OBJTYPE_OBSTACLE:int = 7;
         public static const OBJTYPE_TRAP:int = 8;
+        public static const OBJTYPE_SPELL:int = 9;
         public static const AREA_NONE:int = 0;
         public static const AREA_GROUND:int = 1;
         public static const AREA_AIR:int = 2;

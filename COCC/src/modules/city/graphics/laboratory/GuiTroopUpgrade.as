@@ -52,7 +52,7 @@
         private function addIndexItem(param1:String, param2:int, param3:int, param4:int, param5:int) : void
         {
             var _loc_6:* = new GuiUpgradeBuildingItem();
-            new GuiUpgradeBuildingItem().loadUpgradeItem(param1, param4, param2, param3);
+            _loc_6.loadUpgradeItem(param1, param4, param2, param3);
             addGui(_loc_6);
             _loc_6.setPos(226, 60 + param5 * _loc_6.heightBg);
             this.listItem.push(_loc_6);
@@ -62,7 +62,7 @@
         private function addInfoIndexItem(param1:String, param2:int, param3:int, param4:int, param5:Boolean = false) : void
         {
             var _loc_6:* = new GuiUpgradeBuildingItem();
-            new GuiUpgradeBuildingItem().loadInfoItem(param1, param2, param3, param5);
+            _loc_6.loadInfoItem(param1, param2, param3, param5);
             addGui(_loc_6);
             _loc_6.setPos(226, 60 + param4 * _loc_6.heightBg);
             this.listItem.push(_loc_6);

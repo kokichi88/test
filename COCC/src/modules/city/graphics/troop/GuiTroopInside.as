@@ -4,6 +4,7 @@
     import component.*;
     import flash.display.*;
     import flash.events.*;
+    import flash.text.*;
 	import modules.battle.data.Troop;
     import resMgr.*;
 
@@ -11,6 +12,7 @@
     {
         public var bmpNext:BitmapButton;
         public var bmpPrev:BitmapButton;
+        public var labelTitleInside:TextField;
         private var pageItem:PageMgr;
         public var listItem:Vector.<GuiTroopItem>;
         private static const BMP_PREVIOUS:String = "bmpPrev";
@@ -44,6 +46,34 @@
         }// end function
 
         public function loadTroopInside(param1:Vector.<Troop>) : void
+        {
+            var _loc_6:GuiTroopItem = null;
+            this.labelTitleInside.text = "Quân đội:";
+            this.removeAllItem();
+            var _loc_2:* = new Sprite();
+            var _loc_3:int = 0;
+            while (_loc_3 < param1.length)
+            {
+                
+                _loc_6 = new GuiTroopItem();
+                _loc_6.setTroop(param1[_loc_3]);
+                _loc_2.addChild(_loc_6.bgImg);
+                _loc_6.setPos(_loc_3 * (_loc_6.widthBg + pading), 0);
+                this.listItem.push(_loc_6);
+                _loc_3++;
+            }
+            var _loc_4:int = 325;
+            var _loc_5:int = 63;
+            this.pageItem.setData(_loc_2, _loc_4, 63, 0, PageMgr.HOZIRONTOL, true, 1);
+            var _loc_7:* = this.pageItem.totalPage > 1;
+            this.bmpPrev.visible = this.pageItem.totalPage > 1;
+            this.bmpNext.visible = _loc_7;
+            this.bmpNext.enable = this.pageItem.canNext();
+            this.bmpPrev.enable = this.pageItem.canPrev();
+            return;
+        }// end function
+
+        public function loadSpellInside(param1:Vector.<Troop>) : void
         {
             var _loc_6:GuiTroopItem = null;
             this.removeAllItem();

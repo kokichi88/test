@@ -133,6 +133,8 @@
             _loc_3.uAvatar = "";
             _loc_3.uId = _loc_2.uId;
             _loc_3.uName = _loc_2.uName;
+            _loc_3.clanIcon = _loc_2.clanIcon;
+            _loc_3.clanName = _loc_2.clanName;
             CityMgr.getInstance().loadBattleInfo(_loc_3);
             this.troopList = _loc_2.troopList;
             this.troopsCell = _loc_2.troopsCell;
@@ -179,6 +181,8 @@
             var _loc_2:* = new ReplayBattleListMsg(param1.Data);
             this.listLog = _loc_2.listLog;
             this.listLogAttack = _loc_2.listLogAttack;
+            this.listLog.sort(this.compareLogBattleData);
+            this.listLogAttack.sort(this.compareLogBattleData);
             CityMgr.getInstance().guiLog.setInfo(this.listLog, this.listLogAttack);
             if (this.lastTimeLogin == 0)
             {
@@ -204,6 +208,19 @@
                 CityMgr.getInstance().guiMainBottom.showMailNotice(_loc_3.length);
             }
             return;
+        }// end function
+
+        private function compareLogBattleData(param1:LogBattleData, param2:LogBattleData) : int
+        {
+            if (param1.keyLog > param2.keyLog)
+            {
+                return 1;
+            }
+            if (param1.keyLog < param2.keyLog)
+            {
+                return -1;
+            }
+            return 0;
         }// end function
 
         public function loop() : void
@@ -282,7 +299,7 @@
                 _loc_3++;
             }
             var _loc_4:* = new GetInfoReplayBattle();
-            new GetInfoReplayBattle().key = param1;
+            _loc_4.key = param1;
             _loc_4.mode = param2;
             bzConnector.send(_loc_4);
             BattleModule.getInstance().resetData();

@@ -42,7 +42,7 @@
             this.loadingBar.x = (this.width - this.loadingBar.width) / 2;
             this.loadingBar.y = GlobalVar.SCREEN_HEIGHT - this.loadingBar.height - 30;
             var _loc_5:* = new EmbedFormat(15, 16777215);
-            new EmbedFormat(15, 16777215).align = "center";
+            _loc_5.align = "center";
             this.txtPercent.text = "";
             this.txtPercent.autoSize = TextFieldAutoSize.CENTER;
             this.txtPercent.embedFonts = true;

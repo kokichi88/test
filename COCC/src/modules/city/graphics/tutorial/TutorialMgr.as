@@ -182,6 +182,7 @@
                 case 54:
                 case 55:
                 case 56:
+				case 57:
                 {
                     this.curStep = 53;
                     break;
@@ -877,10 +878,10 @@
                 case 51:
                 {
                     _loc_11 = GameDataMgr.getInstance().getCurrentHousingSpace();
-                    _loc_12 = CityMgr.getInstance().guiTrainTroop.getTrainHousingSpace();
+                    _loc_12 = CityMgr.getInstance().guiTrainTroop2.getTrainHousingSpace();
                     if (_loc_11 < 20 && _loc_12 < 20)
                     {
-                        _loc_2 = CityMgr.getInstance().guiTrainTroop.getPos();
+                        _loc_2 = CityMgr.getInstance().guiTrainTroop2.getPos();
                         _loc_2.x = _loc_2.x + 66;
                         _loc_2.y = _loc_2.y + 240;
                         this.layer.ShowTutorialScreenRect(_loc_2.x, _loc_2.y, 102, 132, 0);
@@ -903,8 +904,8 @@
                     if (_loc_13 < 20)
                     {
                         this.removeGuideText();
-                        _loc_2 = CityMgr.getInstance().guiTrainTroop.getPos();
-                        _loc_21 = CityMgr.getInstance().guiTrainTroop.bmpQuickFinish;
+                        _loc_2 = CityMgr.getInstance().guiTrainTroop2.getPos();
+                        _loc_21 = CityMgr.getInstance().guiTrainTroop2.bmpQuickFinish;
                         _loc_2.x = _loc_2.x + _loc_21.img.x;
                         _loc_2.y = _loc_2.y + _loc_21.img.y;
                         this.layer.ShowTutorialScreenRect(_loc_2.x, _loc_2.y, 120, 52, 0);
@@ -1213,7 +1214,7 @@
             _loc_3.elixir = 0;
             _loc_3.darkElixir = 0;
             var _loc_4:* = new Troop();
-            new Troop().type = DataObject.WINZAR;
+            _loc_4.type = DataObject.WINZAR;
             _loc_4.num = 5;
             _loc_4.level = 4;
             _loc_1.troopList.push(_loc_4);

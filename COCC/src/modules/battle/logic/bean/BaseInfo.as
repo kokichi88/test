@@ -23,6 +23,7 @@
         public static const WIDTH_CELL:Number = 38;
         public static const HEIGHT_CELL:Number = 28.5;
         public static const SCALE_MAP:Number = 1.333;
+        public static const SCALE_SPEED:Number = 1.2;
 
         public function BaseInfo()
         {
@@ -38,7 +39,8 @@
             this.attackSpeed = param1.attackSpeed * GlobalVar.stage.frameRate;
             this.attackRange = param1.attackRange * WIDTH_CELL;
             this.damagePerAttack = param1.damagePerAttack;
-            this.moveSpeed = param1.moveSpeed / 8 * GlobalVar.stage.frameRate;
+            var _loc_2:* = param1.moveSpeed / 8 * WIDTH_CELL * SCALE_SPEED * 10;
+            this.moveSpeed = _loc_2 / 10;
             this.attackArea = param1.attackArea;
             this.attackRadius = param1.attackRadius * WIDTH_CELL;
             this.attackType = param1.attackType;
@@ -75,6 +77,17 @@
             this.curHp = this.maxHp;
             this.id = param1.id;
             this.numHousingSpace = param1.skillSlotsWorth;
+            return;
+        }// end function
+
+        public function setSpellInfo(param1:DataSpell) : void
+        {
+            this.attackRange = param1.randomRadius;
+            this.attackRadius = param1.radius;
+            this.id = param1.id;
+            this.level = param1.level;
+            this.damagePerAttack = param1.damagePerStrike;
+            this.attackSpeed = 1 * GlobalVar.stage.frameRate;
             return;
         }// end function
 

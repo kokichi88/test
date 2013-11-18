@@ -16,6 +16,7 @@
         public static var HARVEST_GOLD:String = "Gold_Harvest";
         public static var HARVEST_ELIXIR:String = "Elixir_Harvest";
         public static var SELL:String = "Sell";
+        public static var CREATE_SPELL:String = "CreateSpell";
 
         public function BuildingActionType()
         {

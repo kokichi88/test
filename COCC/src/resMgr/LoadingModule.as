@@ -434,6 +434,21 @@
                             JsonMgr.getInstance().setShieldPrice(data);
                             break;
                         }
+                        case "SpellBase.json":
+                        {
+                            JsonMgr.getInstance().setSpellBase(data);
+                            break;
+                        }
+                        case "SpellFactory.json":
+                        {
+                            JsonMgr.getInstance().setSpellFactory(data);
+                            break;
+                        }
+                        case "SpellLevel.json":
+                        {
+                            JsonMgr.getInstance().setSpellLevel(data);
+                            break;
+                        }
                         default:
                         {
                             break;

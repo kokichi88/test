@@ -24,7 +24,7 @@
 
     public class MapObject extends Object
     {
-        public var autoId:int;
+        public var autoId:int = 0;
         public var level:int;
         public var posX:int;
         public var posY:int;
@@ -668,7 +668,8 @@
                         GameInput.getInstance().isMouseDrag = false;
                         return;
                     }
-                    break;
+                    CityMgr.getInstance().guiPopup.showMessageBox("Xin lỗi", "Chức năng hiện đang bảo trì\nSẽ sớm quay trở lại", "ĐỒNG Ý", null);
+                    return;
                 }
                 default:
                 {
